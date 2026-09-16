@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدینہ اکیڈمی</title>
+    <!-- گوگل فونٹس برائے خوبصورت اردو لکھائی -->
+    <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Cairo', 'Jameel Noori Nastaleeq', Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.8;
+        }
+        /* ہیڈر سیکشن */
+        header {
+            background-color: #004d40;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #b2dfdb;
+        }
+        /* نیویگیشن بار */
+        nav {
+            background-color: #00796b;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            margin: 0 5px;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            border-radius: 4px;
+        }
+        nav a:hover {
+            background-color: #004d40;
+        }
+        /* مین کنٹینر */
+        .container {
+            width: 85%;
+            margin: auto;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+        section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        section h2 {
+            color: #004d40;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #00796b;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        /* کورسز کارڈز */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .course-card {
+            background: #f1f8e9;
+            border: 1px solid #c8e6c9;
+            padding: 25px;
+            border-radius: 6px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .course-card h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        /* رابطہ فارم اور معلومات */
+        .contact-info {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        /* فوٹر */
+        footer {
+            background-color: #263238;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ہیڈر -->
+    <header>
+        <h1>مدینہ اکیڈمی</h1>
+        <p>عربی زبان میں روانی اور شارٹ دینی کورسز کا بہترین ادارہ (زیرِ نگرانی: ابو العربی مدنی)</p>
+    </header>
+
+    <!-- نیویگیشن -->
+    <nav>
+        <a href="#home">ہوم پیج</a>
+        <a href="#about">تعارف</a>
+        <a href="#courses">ہمارے کورسز</a>
+        <a href="#contact">رابطہ</a>
+    </nav>
+
+    <!-- مین سیکشنز -->
+    <div class="container">
+        
+        <!-- ہوم / خوش آمدید -->
+        <section id="home">
+            <h2>خوش آمدید</h2>
+            <p>مدینہ اکیڈمی میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں عربی بول چال میں مہارت حاصل کرنا چاہتے ہیں اور ضروری دینی علوم سے روشناس ہونا چاہتے ہیں۔</p>
+        </section>
+
+        <!-- ہمارے بارے میں -->
+        <section id="about">
+            <h2>ہمارے بارے میں</h2>
+            <p>مدینہ اکیڈمی کے بانی اور معلم <strong>ابو العربی مدنی</strong> ہیں۔ اکیڈمی کا بنیادی مقصد عامۃ الناس کو آسان فہم انداز میں عربی زبان بولنے کے قابل بنانا اور قرآن و سنت کی بنیادی تعلیمات سے جوڑنا ہے۔</p>
+        </section>
+
+        <!-- کورسز -->
+        <section id="courses">
+            <h2>ہمارے خصوصی کورسز</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>🗣️ عربی بول چال کورس</h3>
+                    <p>روزمرہ کی گفتگو، عربی جملے بنانے کا طریقہ، اور بول چال میں روانی پیدا کرنے کے لیے خصوصی پریکٹس سیشنز۔</p>
+                </div>
+                <div class="course-card">
+                    <h3>📖 شارٹ قرآن و فہمِ دین کورس</h3>
+                    <p>تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل، احادیثِ مبارکہ اور روزمرہ کے مسنون اذکار کی تعلیم۔</p>
+                </div>
+                <div class="course-card">
+                    <h3>✍️ بنیادی نحو و صرف (قواعدِ عربی)</h3>
+                    <p>عربی عبارت کو سمجھنے اور گرامر کی بنیادی غلطیوں سے بچنے کے لیے مختصر اور آسان کورس۔</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- رابطہ -->
+        <section id="contact">
+            <h2>رابطہ کیجئے</h2>
+            <div class="contact-info">
+                <p><strong>منتظم:</strong> ابو العربی مدنی</p>
+                <p><strong>فون نمبر / واٹس ایپ:</strong> +254180111857</p>
+                <p><strong>ای میل:</strong> info@madinaacademy.com</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- فوٹر -->
+    <footer>
+        <p>جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی</p>
+    </footer>
+
+</body>
+</html>
