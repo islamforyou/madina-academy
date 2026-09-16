@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدینہ اکیڈمی</title>
-    <!-- گوگل فونٹس برائے خوبصورت اردو لکھائی -->
+    <title>مدینہ اکیڈمی - Madina Academy</title>
+    <!-- گوگل فونٹس -->
     <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -31,8 +31,24 @@
             margin-bottom: 5px;
         }
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #b2dfdb;
+        }
+        /* زبان تبدیل کرنے والا بار (Language Bar) */
+        .lang-bar {
+            background-color: #00251a;
+            text-align: center;
+            padding: 8px;
+        }
+        .lang-bar a {
+            color: #ffb300;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .lang-bar a:hover {
+            text-decoration: underline;
         }
         /* نیویگیشن بار */
         nav {
@@ -54,7 +70,6 @@
         nav a:hover {
             background-color: #004d40;
         }
-        /* ایڈمیشن بٹن کا خاص رنگ (پیلا/سنہری) */
         nav a.admission-btn {
             background-color: #ff8f00;
             font-weight: bold;
@@ -62,7 +77,6 @@
         nav a.admission-btn:hover {
             background-color: #e65100;
         }
-        /* واٹس ایپ نیو بٹن کا خاص رنگ */
         nav a.whatsapp-btn {
             background-color: #25D366;
             font-weight: bold;
@@ -92,6 +106,21 @@
             padding-bottom: 5px;
             display: inline-block;
         }
+        /* زبان کے سیکشنز (لینگویج بلاکس) */
+        .lang-section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #ddd;
+        }
+        .lang-title {
+            background: #00796b;
+            color: white;
+            padding: 5px 15px;
+            display: inline-block;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
         /* کورسز کارڈز */
         .courses-grid {
             display: grid;
@@ -105,16 +134,11 @@
             padding: 25px;
             border-radius: 6px;
             text-align: center;
-            transition: transform 0.3s;
-        }
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .course-card h3 {
             color: #2e7d32;
             margin-bottom: 10px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
         /* ایڈمیشن باکس */
         .admission-box {
@@ -125,12 +149,7 @@
             text-align: center;
             margin-top: 20px;
         }
-        /* رابطہ فارم اور معلومات */
-        .contact-info {
-            font-size: 1.1rem;
-            margin-top: 10px;
-        }
-        /* تیرتا ہوا (Floating) واٹس ایپ بٹن */
+        /* فلوٹنگ واٹس ایپ بٹن */
         .float-whatsapp {
             position: fixed;
             width: 60px;
@@ -167,89 +186,105 @@
 </head>
 <body>
 
+    <!-- زبان تبدیل کرنے کا بار -->
+    <div class="lang-bar">
+        <span>Languages: </span>
+        <a href="#urdu">اردو</a> | 
+        <a href="#arabic">العربية</a> | 
+        <a href="#english">English</a>
+    </div>
+
     <!-- ہیڈر -->
     <header>
-        <h1>مدینہ اکیڈمی</h1>
-        <p>عربی زبان میں روانی اور شارٹ دینی کورسز کا بہترین ادارہ (زیرِ نگرانی: ابو العربی مدنی)</p>
+        <h1>مدینہ اکیڈمی / Madina Academy</h1>
+        <p>عربی زبان اور شارٹ دینی کورسز کا ادارہ (زیرِ نگرانی: ابو العربی مدنی)</p>
     </header>
 
     <!-- نیویگیشن بار -->
     <nav>
-        <a href="#home">ہوم پیج</a>
-        <a href="#about">تعارف</a>
-        <a href="#courses">ہمارے کورسز</a>
-        <a href="#admission" class="admission-btn">📝 آن لائن داخلہ</a>
-        <a href="#contact">رابطہ</a>
-        <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20کورسز%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" target="_blank" class="whatsapp-btn">💬 واٹس ایپ چیٹ</a>
+        <a href="#home">ہوم / Home</a>
+        <a href="#courses">کورسز / Courses</a>
+        <a href="#admission" class="admission-btn">📝 آن لائن داخلہ / Admission</a>
+        <a href="#contact">رابطہ / Contact</a>
+        <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
     </nav>
 
-    <!-- مین سیکشنز -->
+    <!-- مین کنٹینر -->
     <div class="container">
         
-        <!-- ہوم / خوش آمدید -->
+        <!-- ہوم / تعارف (تینوں زبانوں میں) -->
         <section id="home">
-            <h2>خوش آمدید</h2>
-            <p>مدینہ اکیڈمی میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں عربی بول چال میں مہارت حاصل کرنا چاہتے ہیں اور ضروری دینی علوم سے روشناس ہونا چاہتے ہیں۔</p>
+            <h2>خوش آمدید / Welcome / أهلاً وسهلاً</h2>
+            
+            <!-- اردو سیکشن -->
+            <div id="urdu" class="lang-section">
+                <span class="lang-title">اردو</span>
+                <p><strong>مدینہ اکیڈمی</strong> میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں عربی بول چال میں مہارت حاصل کرنا چاہتے ہیں اور ضروری دینی علوم سے روشناس ہونا چاہتے ہیں۔ بانی و معلم: <strong>ابو العربی مدنی</strong>۔</p>
+            </div>
+
+            <!-- عربی سیکشن -->
+            <div id="arabic" class="lang-section" dir="rtl">
+                <span class="lang-title">العربية</span>
+                <p>مرحباً بكم في <strong>أكاديمية المدينة</strong>. تم تأسيس هذه الأكاديمية خصيصاً للطلاب الراغبين في إتقان المحادثة باللغة العربية في وقت قصير وطلب العلوم الشرعية الأساسية. بإشراف المشرف: <strong>أبو العربي المدني</strong>.</p>
+            </div>
+
+            <!-- انگلش سیکشن -->
+            <div id="english" class="lang-section" dir="ltr" style="text-align: left;">
+                <span class="lang-title">English</span>
+                <p>Welcome to <strong>Madina Academy</strong>. This institution is specially established for students who want to master Arabic conversation in a short time and learn essential Islamic sciences. Managed by: <strong>Abu Al-Arabi Madani</strong>.</p>
+            </div>
         </section>
 
-        <!-- ہمارے بارے میں -->
-        <section id="about">
-            <h2>ہمارے بارے میں</h2>
-            <p>مدینہ اکیڈمی کے بانی اور معلم <strong>ابو العربی مدنی</strong> ہیں۔ اکیڈمی کا بنیادی مقصد عامۃ الناس کو آسان فہم انداز میں عربی زبان بولنے کے قابل بنانا اور قرآن و سنت کی بنیادی تعلیمات سے جوڑنا ہے۔</p>
-        </section>
-
-        <!-- کورسز -->
+        <!-- کورسز سیکشن -->
         <section id="courses">
-            <h2>ہمارے خصوصی کورسز</h2>
+            <h2>ہمارے کورسز / Our Courses / دوراتنا</h2>
             <div class="courses-grid">
                 <div class="course-card">
-                    <h3>🗣️ عربی بول چال کورس</h3>
-                    <p>روزمرہ کی گفتگو، عربی جملے بنانے کا طریقہ، اور بول چال میں روانی پیدا کرنے کے لیے خصوصی پریکٹس سیشنز۔</p>
+                    <h3>🗣️ عربی بول چال / Arabic Conversation</h3>
+                    <p>روزمرہ کی گفتگو اور روانی کے لیے۔<br>For fluent daily communication.</p>
                 </div>
                 <div class="course-card">
-                    <h3>📖 شارٹ قرآن و فہمِ دین کورس</h3>
-                    <p>تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل، احادیثِ مبارکہ اور روزمرہ کے مسنون اذکار کی تعلیم۔</p>
+                    <h3>📖 قرآن و فہمِ دین / Quran & Islamic Studies</h3>
+                    <p>ترجمہ قرآن اور بنیادی فقہ۔<br>Translation and basic Islamic jurisprudence.</p>
                 </div>
                 <div class="course-card">
-                    <h3>✍️ بنیادی نحو و صرف (قواعدِ عربی)</h3>
-                    <p>عربی عبارت کو سمجھنے اور گرامر کی بنیادی غلطیوں سے بچنے کے لیے مختصر اور آسان کورس۔</p>
+                    <h3>✍️ نحو و صرف / Arabic Grammar</h3>
+                    <p>عربی قواعد اور گرامر کا آسان کورس.<br>Easy grammar and syntax course.</p>
                 </div>
             </div>
         </section>
 
         <!-- آن لائن ایڈمیشن سیکشن -->
         <section id="admission">
-            <h2>آن لائن داخلہ (Admission)</h2>
-            <p>اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا چاہتے ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں اور ڈائریکٹ داخلہ لیں:</p>
+            <h2>آن لائن داخلہ / Online Admission</h2>
+            <p>داخلہ لینے کے لیے نیچے دیے گئے بٹن پر کلک کر کے فارم پُر کریں:<br>Click the button below to fill out the admission form:</p>
             <div class="admission-box">
-                <p style="font-size: 1.2rem; margin-bottom: 15px; font-weight: bold; color: #e65100;">داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUPeGuIIxhfc49VG5FET4e6yPVNcNrAQOBuDIWA0WGrDnMDw/viewform?usp=publish-editor" target="_blank" style="background-color: #ff8f00; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 1.1rem;">فارم کھولیں اور داخلہ لیں</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUPeGuIIxhfc49VG5FET4e6yPVNcNrAQOBuDIWA0WGrDnMDw/viewform?usp=publish-editor" target="_blank" style="background-color: #ff8f00; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 1.1rem;">فارم کھولیں / Open Admission Form</a>
             </div>
         </section>
 
         <!-- رابطہ -->
         <section id="contact">
-            <h2>رابطہ کیجئے</h2>
+            <h2>رابطہ / Contact Us</h2>
             <div class="contact-info">
-                <p><strong>منتظم:</strong> ابو العربی مدنی</p>
-                <p><strong>فون نمبر / واٹس ایپ:</strong> +254180111857</p>
-                <p><strong>ای میل:</strong> info@madinaacademy.com</p>
+                <p><strong>منتظم / Manager:</strong> ابو العربی مدنی (Abu Al-Arabi Madani)</p>
+                <p><strong>واٹس ایپ / WhatsApp:</strong> +254180111857</p>
                 <p style="margin-top: 15px;">
-                    <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20جاننا%20چاہتا ہوں۔" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;">واٹس ایپ پر میسج کریں</a>
+                    <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20جاننا%20چاہتا ہوں۔" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;">واٹس ایپ پر رابطہ کریں / Contact via WhatsApp</a>
                 </p>
             </div>
         </section>
 
     </div>
 
-    <!-- سکرین کے کونے پر تیرتا ہوا واٹس ایپ کا گول آئیکن -->
+    <!-- فلوٹنگ واٹس ایپ بٹن -->
     <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" class="float-whatsapp" target="_blank">
         💬
     </a>
 
     <!-- فوٹر -->
     <footer>
-        <p>جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی</p>
+        <p>جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی / Madina Academy</p>
     </footer>
 
 </body>
