@@ -122,7 +122,7 @@
         /* کورسز کارڈز اور ڈراپ ڈاؤن تفصیلات */
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -149,34 +149,41 @@
             margin-bottom: 15px;
             text-align: center;
         }
-        /* چھپی ہوئی تفصیلات جو کلک کرنے پر ظاہر ہوں گی */
+        /* چھپی ہوئی تفصیلی معلومات جو کلک کرنے پر ظاہر ہوں گی */
         .course-details {
             display: none;
             background: #ffffff;
-            padding: 12px;
+            padding: 15px;
             border-radius: 6px;
             border: 1px dashed #81c784;
             margin-bottom: 15px;
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             color: #333;
+            text-align: justify;
         }
-        .course-details ul {
-            padding-right: 20px;
-            margin-top: 5px;
+        .course-details p {
+            margin-bottom: 12px;
         }
-        .course-details li {
-            margin-bottom: 5px;
+        .arabic-quote {
+            background: #f9fbe7;
+            border-right: 4px solid #7cb342;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.05rem;
+            text-align: center;
+            color: #1b5e20;
+            font-weight: bold;
         }
         /* ٹوگل بٹن */
         .details-btn {
             background-color: #00796b;
             color: white;
             border: none;
-            padding: 8px 12px;
+            padding: 9px 12px;
             border-radius: 4px;
             cursor: pointer;
             font-family: inherit;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: bold;
             text-align: center;
             transition: background 0.3s;
@@ -280,90 +287,95 @@
         <!-- کورسز -->
         <section id="courses">
             <h2 id="courses-title">ہمارے خصوصی کورسز</h2>
-            <p style="margin-bottom: 15px; color: #555; font-size: 0.95rem;" id="courses-hint">کسی بھی کورس کی مکمل تفصیلات دیکھنے کے لیے نیچے دیے گئے بٹن پر کلک کریں:</p>
+            <p style="margin-bottom: 15px; color: #555; font-size: 0.95rem;" id="courses-hint">کسی بھی کورس کی مکمل تفصیلات اور خصوصیات پڑھنے کے لیے نیچے دیے گئے بٹن پر کلک کریں:</p>
             
             <div class="courses-grid">
                 
-                <!-- کورس 1: ناظرہ قرآن -->
+                <!-- 1. ناظرہ قرآن پاک -->
                 <div class="course-card">
                     <div>
                         <h3 id="c1-title">📖 ناظرہ قرآن پاک کورس</h3>
                         <p class="course-short-desc" id="c1-short">درست تجوید اور مخارج کے ساتھ قرآن پاک کی روانی سے تلاوت سیکھیں۔</p>
+                        
                         <div class="course-details" id="c1-details">
-                            <strong id="c1-feat-title">خصوصیات و تفصیل:</strong>
-                            <ul id="c1-list">
-                                <li>حروف کی درست ادائیگی اور مخارج کی مشق۔</li>
-                                <li>قواعدِ تجوید کا عملی نفاذ۔</li>
-                                <li>روانی اور خوبصورت لہجے میں تلاوت کی تربیت۔</li>
-                            </ul>
+                            <p>قرآن مجید کو درست تلفظ، تجوید اور فہم کے ساتھ سیکھنا ہر مسلمان کی خواہش ہوتی ہے۔ یہ کورس ان تمام افراد کے لیے ایک بہترین موقع ہے جو قرآن کریم کی تلاوت کو خوبصورت، درست اور بااثر بنانا چاہتے ہیں۔ قرآن مجید اللہ تعالٰی کا مقدس کلام ہے اور اس کی تعلیم و تعلم کی فضیلت کا اندازہ نبی کریم ﷺ کے اس مبارک فرمان سے ہوتا ہے:</p>
+                            
+                            <div class="arabic-quote">«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»<br><span style="font-size: 0.9rem; font-weight: normal; color: #333;">(تم میں سے بہترین شخص وہ ہے جو قرآن سیکھے اور اسے سکھائے۔ - صحیح بخاری)</span></div>
+                            
+                            <p>اس عظیم نبوی ارشاد کو مشعلِ راہ بناتے ہوئے اس کورس کو اس طرح ترتیب دیا گیا ہے کہ آپ بنیادی مخارج کی درستگی، تجوید کے قواعد اور تلاوت کے صحيح طریقہ کار کو آسانی سے سمجھ سکیں۔ کورس میں ہر طالب علم کی انفرادی اصلاح پر توجہ دی جائے گی تاکہ مخارج کی غلطیوں کو دور کر کے تلاوت میں حسن اور روانی پیدا کی جا سکے۔</p>
+                            
+                            <p><strong>اہم خصوصیت:</strong> اس کورس کی سب سے اہم اور نمایاں خصوصیت اس کے خصوصی پریکٹس سیشنز ہیں۔ صرف قواعد یاد कर लेना کافی نہیں ہوتا، اسی لیے ان عملی سیشنز میں آپ کو استاد کے سامنے باقاعدگی سے تلاوت کی مشق کروائی جائے گی۔ اس سے نہ صرف آپ کا اعتماد بڑھے گا بلکہ آپ کی تلاوت میں درستگی، خوبصورتی اور فطری بہاؤ پیدا ہوگا۔ یہ کورس آپ کے لیے قرآن کریم سے اپنا تعلق مضبوط کرنے اور دوہری سعادت حاصل کرنے کا بہترین ذریعہ بنے گا۔</p>
                         </div>
                     </div>
                     <button class="details-btn" onclick="toggleDetails('c1-details', this)" id="c1-btn">مزید تفصیلات پڑھیں</button>
                 </div>
 
-                <!-- کورس 2: مدنی قاعدہ -->
+                <!-- 2. مدنی قاعدہ کورس -->
                 <div class="course-card">
                     <div>
                         <h3 id="c2-title">🟢 مدنی قاعدہ کورس</h3>
                         <p class="course-short-desc" id="c2-short">بچوں اور بڑوں کے لیے قرآن پاک پڑھنے کی پہلی سیڑھی۔</p>
+                        
                         <div class="course-details" id="c2-details">
-                            <strong id="c2-feat-title">خصوصیات و تفصیل:</strong>
-                            <ul id="c2-list">
-                                <li>حروفِ تہجی اور ان کی مفردات و مرکبات شناخت۔</li>
-                                <li>حرکات، تنوین اور مدّ کا آسان فہم طریقہ۔</li>
-                                <li>ابتدائی طلباء کے لیے بہترین بنیاد۔</li>
-                            </ul>
+                            <p>مدنی قاعدہ کورس بچوں اور نوآموز افراد کے لیے قرآن کریم کی تلاوت کی طرف پہلا اور انتہائی اہم قدم ہے۔ درست تلفظ اور بنیادی تختیوں کی مضبوطی کے بغیر اچھی تلاوت ممکن نہیں۔</p>
+                            <p>اس کورس میں حروفِ تہجی کی شناخت، ان کے مخرج، حرکات، تنوین، مدّ اور سکون کے قواعد کو انتہائی آسان اور دلکش انداز میں پڑھایا جاتا ہے، تاکہ ہر طالب علم بغیر کسی دشواری کے قرآن پاک کے الفاظ جوڑنے اور پڑھنے کے قابل ہو جائے۔</p>
                         </div>
                     </div>
                     <button class="details-btn" onclick="toggleDetails('c2-details', this)" id="c2-btn">مزید تفصیلات پڑھیں</button>
                 </div>
 
-                <!-- کورس 3: عربی بول چال -->
+                <!-- 3. عربی بول چال کورس -->
                 <div class="course-card">
                     <div>
                         <h3 id="c3-title">🗣️ عربی بول چال کورس</h3>
                         <p class="course-short-desc" id="c3-short">روزمرہ کی گفتگو اور عربی جملے بنانے کا بہترین طریقہ۔</p>
+                        
                         <div class="course-details" id="c3-details">
-                            <strong id="c3-feat-title">خصوصیات و تفصیل:</strong>
-                            <ul id="c3-list">
-                                <li>روزمرہ استعمال ہونے والے عربی الفاظ اور محاورے۔</li>
-                                <li>بغیر رٹے روانی سے جملے تشکیل دینے کی مشق۔</li>
-                                <li>خصوصی لائیو پریکٹس سیشنز۔</li>
-                            </ul>
+                            <p>عربی بول چال کا یہ جامع کورس ان تمام افراد کے لیے ایک بہترین موقع ہے جو عربی زبان سیکھنے، سمجھنے اور اسے اپنی روزمرہ گفتگو میں روانی کے ساتھ بولنے کے خواہش مند ہیں۔ عربی زبان کی اہمیت اور اس سے محبت کا اندازہ اس روایت سے ہوتا ہے جس میں نبی کریم ﷺ نے ارشاد فرمایا:</p>
+                            
+                            <div class="arabic-quote">«أَحِبُّوا الْعَرَبَ لِثَلَاثٍ: لِأَنِّي عَرَبِيٌّ، وَالْقُرْآنَ عَرَبِيٌّ، وَكَلامَ أَهْلِ الْجَنَّةِ عَرَبِيٌّ»<br><span style="font-size: 0.9rem; font-weight: normal; color: #333;">(عرب سے تین وجہ سے محبت کرو: اس لیے کہ میں عربی ہوں، قرآن عربی میں ہے، اور اہل جنت کا کلام عربی ہوگا۔ - طبرانی، بیہقی)</span></div>
+                            
+                            <p>اس مبارک جذبے۔۔۔ اور اہم مقاصد کو سامنے رکھتے ہوئے، اس کورس میں آپ کو روزمرہ کی گفتگو، سفر، خرید و فروخت اور عام ملاقاتوں میں استعمال ہونے والی بااثر عربی زبان سکھائی جائے گی۔ آپ کو یہ سیکھنے کا موقع ملے گا کہ کس طرح درست الفاظ کا انتخاب کر کے واضح اور خوبصورت جملے بنائے جاتے ہیں۔</p>
+                            
+                            <p><strong>اہم خصوصیت:</strong> اس کورس کی سب سے نمایاں خصوصیت اس کے خصوصی پریکٹس سیشنز ہیں۔ محض گرامر اور سبق پڑھ لینا کافی نہیں ہوتا، اسی لیے ان عملی سیشنز میں آپ کو باقاعدگی سے بولنے اور گفتگو کرنے کی مشق کروائی جائے گی۔ اس سے آپ کی ہچکچاہٹ ختم ہوگی، تلفظ کی ادائیگی درست ہوگی اور بول چال میں فطری روانی پیدا ہوگی۔ یہ کورس عربی زبان سے آپ کے تعلق کو مضبوط بنانے کا بہترین ذریعہ ہے۔</p>
                         </div>
                     </div>
                     <button class="details-btn" onclick="toggleDetails('c3-details', this)" id="c3-btn">مزید تفصیلات پڑھیں</button>
                 </div>
 
-                <!-- کورس 4: نحو و صرف -->
+                <!-- 4. نحو و صرف کورس -->
                 <div class="course-card">
                     <div>
                         <h3 id="c4-title">✍️ بنیادی نحو و صرف (قواعدِ عربی)</h3>
                         <p class="course-short-desc" id="c4-short">عربی عبارت کو سمجھنے اور گرامر کی غلطیوں سے بچنے کا کورس۔</p>
+                        
                         <div class="course-details" id="c4-details">
-                            <strong id="c4-feat-title">خصوصیات و تفصیل:</strong>
-                            <ul id="c4-list">
-                                <li>اسم، فعل اور حرف کی شناخت۔</li>
-                                <li>عربی گرامر کے بنیادی قوانین کا آسان فہم مطالعہ۔</li>
-                                <li>قرآنی آیات اور عبات کی ترکیب کرنے کی صلاحیت۔</li>
-                            </ul>
+                            <p>صرف و نحو (عربی گرامر) کا یہ جامع کورس ان تمام افراد کے لیے ایک بہترین موقع ہے جو عربی زبان کے قواعد کو سمجھ کر قرآن، حدیث اور کلاسیکی عربی ادب کو بنیادی سطح سے سمجھنے کے خواہش مند ہیں۔ عربی گرامر وہ بنیادی چابی ہے جس کے بغیر قرآن و حدیث کے گہرے مفاہیم تک رسائی ممکن نہیں، اور اس کی اہمیت کا اندازہ حضرت عمر بن خطاب رضی اللہ عنہ کے اس مشہور قول سے ہوتا ہے:</p>
+                            
+                            <div class="arabic-quote">«تَعَلَّمُوا الْعَرَبِيَّةَ فَإِنَّهَا مِنْ دِينِكُمْ»<br><span style="font-size: 0.9rem; font-weight: normal; color: #333;">(عربی زبان (اور اس کے قواعد) سیکھو، کیونکہ یہ تمہارے دین کا حصہ ہے۔ - شعب الایمان للبیہقی)</span></div>
+                            
+                            <p>इस بنیادی ضرورت کو مدِ نظر رکھتے ہوئے اس کورس میں آپ کو علمِ صرف (الفاظ کی ساخت اور ان کے گردان) اور علمِ نحو (جملوں کی ترسیب اور ان کے آخری اعراب) کو انتہائی سادہ، فہم عام اور منظم انداز میں سکھایا جائے گا، تاکہ آپ کو لفظ اور جملے کے درمیان تعلق کو سمجھنے میں کوئی دشواری پیش نہ آئے۔</p>
+                            
+                            <p><strong>اہم خصوصیت:</strong> اس کورس کی سب سے نمایاں خصوصیت اس کے خصوصی پریکٹس سیشنز ہیں۔ صرف قواعد یاد کر لینا کافی نہیں ہوتا جب تک ان کا تطبیق نہ کیا جائے، اسی لیے ان عملی سیشنز میں آپ کو قرآنی آیات اور عربی عبارات سے ترکیبی مشق (اعراب و تحلیل) کروائی جائے گی۔ اس سے نہ صرف آپ کا قواعد پر اعتماد بحال ہوگا بلکہ عربی عبارات کو درست اعراب کے ساتھ پڑھنے اور ان کا صحیح ترجمہ کرنے کی صلاحیت پیدا ہوگی۔ یہ کورس علومِ اسلامیہ کے فہم اور عربی زبان پر عبور کے لیے ایک مضبوط بنیاد ثابت ہوگا۔</p>
                         </div>
                     </div>
                     <button class="details-btn" onclick="toggleDetails('c4-details', this)" id="c4-btn">مزید تفصیلات پڑھیں</button>
                 </div>
 
-                <!-- کورس 5: شارٹ قرآن و فہم دین -->
+                <!-- 5. شارٹ قرآن و فہم دین کورس -->
                 <div class="course-card">
                     <div>
                         <h3 id="c5-title">📖 شارٹ قرآن و فہمِ دین کورس</h3>
                         <p class="course-short-desc" id="c5-short">تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل اور احادیث۔</p>
+                        
                         <div class="course-details" id="c5-details">
-                            <strong id="c5-feat-title">خصوصیات و تفصیل:</strong>
-                            <ul id="c5-list">
-                                <li>منتخب آیات کا ترجمہ و تفسیر۔</li>
-                                <li>نماز، طہارت اور روزمرہ کے ضروری فقہی مسائل۔</li>
-                                <li>احادیثِ مبارکہ اور مسنون دعاؤں کا حفظ۔</li>
-                            </ul>
+                            <p>فہمِ دین کا یہ جامع کورس ان تمام افراد کے لیے ایک بہترین موقع ہے جو اسلام کی بنیادی تعلیمات، عقائد، اور احکامِ شریعت کو صحیح اور مدلل انداز میں سمجھنا چاہتے ہیں۔ دین کا بنیادی علم حاصل کرنا ہر مسلمان کی دینی ضرورت ہے، اور اس کی اہمیت کا اندازہ رسول اللہ ﷺ کے اس مبارک فرمان سے ہوتا ہے:</p>
+                            
+                            <div class="arabic-quote">«مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ»<br><span style="font-size: 0.9rem; font-weight: normal; color: #333;">(اللہ تعالیٰ جس شخص کے ساتھ بھلائی کا ارادہ فرماتا ہے، اسے دین کی گہری سمجھ بوجھ عطا فرما دیتا ہے۔ - صحیح بخاری و صحیح مسلم)</span></div>
+                            
+                            <p>اس عظیم مقصد کو پیشِ نظر رکھتے ہوئے اس کورس میں آپ کو عقائد، عبادات، سیرتِ طیبہ، اور روزمرہ زندگی سے متعلق شرعی مسائل کا بنیادی اور فہمِ عام علم فراہم کیا جائے گا، تاکہ آپ اپنے عمل اور زندگی کو اسلام کے اصولوں کے مطابق ڈھال سکیں۔</p>
+                            
+                            <p><strong>اہم خصوصیت:</strong> اس کورس کی سب سے نمایاں خصوصیت اس کے خصوصی پریکٹس اور سوال و جواب کے سیشنز ہیں۔ صرف نظریاتی باتیں سننا کافی نہیں ہوتا، اس لیے ان سیشنز میں آپ کو اپنے درپیش مسائل، فکری الجھنوں اور شرعی سوالات کے جوابات حاصل کرنے کا پورا موقع ملے گا۔ اس سے نہ صرف آپ کے علم میں پختگی آئے گی بلکہ دین پر بصیرت اور اعتماد کے ساتھ عمل کرنے کی صلاحیت پیدا ہوگی۔ یہ کورس آپ کے لیے دین سے سچا تعلق قائم کرنے اور دنیا و آخرت کی کامیابی حاصل کرنے کا ایک بہترین ذریعہ بنے گا۔</p>
                         </div>
                     </div>
                     <button class="details-btn" onclick="toggleDetails('c5-details', this)" id="c5-btn">مزید تفصیلات پڑھیں</button>
@@ -409,19 +421,17 @@
 
     <!-- جاوا اسکرپٹ -->
     <script>
-        // تفصیلات دکھانے یا چھپانے کا فنکشن
         function toggleDetails(id, btn) {
             const detailsBox = document.getElementById(id);
+            const lang = document.getElementById('html-root').getAttribute('lang');
+            
             if (detailsBox.style.display === "block") {
                 detailsBox.style.display = "none";
-                // زبان کے لحاظ سے بٹن کا متن تبدیل کرنا
-                const lang = document.getElementById('html-root').getAttribute('lang');
                 if (lang === 'ar') btn.innerText = "عرض التفاصيل";
                 else if (lang === 'en') btn.innerText = "Read More Details";
                 else btn.innerText = "مزید تفصیلات پڑھیں";
             } else {
                 detailsBox.style.display = "block";
-                const lang = document.getElementById('html-root').getAttribute('lang');
                 if (lang === 'ar') btn.innerText = "إخفاء التفاصيل";
                 else if (lang === 'en') btn.innerText = "Hide Details";
                 else btn.innerText = "تفصیلات چھپائیں";
@@ -444,30 +454,8 @@
                 aboutTitle: "ہمارے بارے میں",
                 aboutDesc: "مدینہ اکیڈمی کے بانی اور معلم <strong>ابو العربی مدنی</strong> ہیں۔ اکیڈمی کا بنیادی مقصد قرآن و سنت کی تعلیمات اور عربی زبان کے قواعد کو آسان فہم انداز میں عامۃ الناس تک پہنچانا ہے۔",
                 coursesTitle: "ہمارے خصوصی کورسز",
-                coursesHint: "کسی بھی کورس کی مکمل تفصیلات دیکھنے کے لیے نیچے دیے گئے بٹن پر کلک کریں:",
+                coursesHint: "کسی بھی کورس کی مکمل تفصیلات اور خصوصیات پڑھنے کے لیے نیچے دیے گئے بٹن پر کلک کریں:",
                 btnMore: "مزید تفصیلات پڑھیں",
-                featTitle: "خصوصیات و تفصیل:",
-                
-                c1Title: "📖 ناظرہ قرآن پاک کورس",
-                c1Short: "درست تجوید اور مخارج کے ساتھ قرآن پاک کی روانی سے تلاوت سیکھیں۔",
-                c1List: "<li>حروف کی درست ادائیگی اور مخارج کی مشق۔</li><li>قواعدِ تجوید کا عملی نفاذ۔</li><li>روانی اور خوبصورت لہجے میں تلاوت کی تربیت۔</li>",
-                
-                c2Title: "🟢 مدنی قاعدہ کورس",
-                c2Short: "بچوں اور بڑوں کے لیے قرآن پاک پڑھنے کی پہلی سیڑھی۔",
-                c2List: "<li>حروفِ تہجی اور ان کی شناخت۔</li><li>حرکات، تنوین اور مدّ کا آسان فہم طریقہ۔</li><li>ابتدائی طلباء کے لیے بہترین بنیاد۔</li>",
-                
-                c3Title: "🗣️ عربی بول چال کورس",
-                c3Short: "روزمرہ کی گفتگو اور عربی جملے بنانے کا بہترین طریقہ۔",
-                c3List: "<li>روزمرہ استعمال ہونے والے عربی الفاظ اور محاورے۔</li><li>بغیر رٹے روانی سے جملے تشکیل دینے کی مشق۔</li><li>خصوصی لائیو پریکٹس سیشنز۔</li>",
-                
-                c4Title: "✍️ بنیادی نحو و صرف (قواعدِ عربی)",
-                c4Short: "عربی عبارت کو سمجھنے اور گرامر کی غلطیوں سے بچنے کا کورس۔",
-                c4List: "<li>اسم، فعل اور حرف کی شناخت۔</li><li>عربی گرامر کے بنیادی قوانین کا آسان فہم مطالعہ۔</li><li>قرآنی آیات اور عبارات کی ترکیب کرنے کی صلاحیت۔</li>",
-                
-                c5Title: "📖 شارٹ قرآن و فہمِ دین کورس",
-                c5Short: "تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل اور احادیث۔",
-                c5List: "<li>منتخب آیات کا ترجمہ و تفسیر۔</li><li>نماز، طہارت اور روزمرہ کے ضروری فقہی مسائل۔</li><li>احادیثِ مبارکہ اور مسنون دعاؤں کا حفظ۔</li>",
-
                 admTitle: "آن لائن داخلہ (Admission)",
                 admDesc: "اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا चाहते ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں:",
                 admBoxTitle: "داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:",
@@ -496,30 +484,8 @@
                 aboutTitle: "من نحن",
                 aboutDesc: "مؤسس ومعلم أكاديمية المدينة هو <strong>أبو العربي المدني</strong>. الهدف الأساسي هو تقريب تعليم الكتاب والسنة وقواعد اللغة العربية للناس بأسلوب سهل.",
                 coursesTitle: "دوراتنا الخاصة",
-                coursesHint: "انقر على الزر أدناه لعرض التفاصيل الكاملة لأي دورة:",
+                coursesHint: "انقر على الزر أدناه لعرض التفاصيل الكاملة والمميزات لأي دورة:",
                 btnMore: "عرض التفاصيل الكاملة",
-                featTitle: "المميزات والتفاصيل:",
-
-                c1Title: "📖 دورة تلاوة القرآن الكريم",
-                c1Short: "تعلم تلاوة القرآن בطلاقة مع التجويد الصحيح والمخارج.",
-                c1List: "<li>النطق الصحيح للحروف ومخارجها.</li><li>التطبيق العملي لقواعد التجويد.</li><li>تدريب على التلاوة بطلاقة وبصوت حسن.</li>",
-
-                c2Title: "🟢 القاعدة المدنية",
-                c2Short: "الخطوة الأولى لقراءة القرآن الكريم للأطفال والكبار.",
-                c2List: "<li>الحروف الهجائية ومعرفتها بدقة.</li><li>طريقة سهلة للحركات والتنوين والمدود.</li><li>أساس ممتاز للطلاب المبتدئين.</li>",
-
-                c3Title: "🗣️ دورة المحادثة العربية",
-                c3Short: "أفضل طريقة للمحادثة اليومية وبناء الجمل العربية.",
-                c3List: "<li>الكلمات والعبارات المستخدمة يومياً.</li><li>ممارسة تكوين الجمل بطلاقة دون حفظ معقد.</li><li>جلسات تدريبية خاصة ومباشرة.</li>",
-
-                c4Title: "✍️ النحو والصرف الأساسي",
-                c4Short: "دورة لفهم النصوص العربية وتجنب الأخطاء النحوية.",
-                c4List: "<li>التعرف على الاسم والفعل والحرف.</li><li>دراسة سهلة لقواعد النحو العربي الأساسية.</li><li>القدرة على إعراب الآيات والنصوص.</li>",
-
-                c5Title: "📖 دورة القرآن والفهم الديني",
-                c5Short: "تلاوة القرآن مع الترجمة، المسائل الفقهية، والأحاديث.",
-                c5List: "<li>ترجم وتفسير الآيات المختارة.</li><li>مسائل الفقه الضرورية للصلاة والطهارة.</li><li>حفظ الأحاديث النبوية والأذكار اليومية.</li>",
-
                 admTitle: "التسجيل الإلكتروني (Admission)",
                 admDesc: "إذا كنت تريد التسجيل في أي من دوراتنا، انقر فوق الزر أدناه لملء النموذج:",
                 admBoxTitle: "انقر أدناه لإرسال استمارة التسجيل:",
@@ -548,30 +514,8 @@
                 aboutTitle: "About Us",
                 aboutDesc: "The founder and teacher of Madina Academy is <strong>Abu Al-Arabi Madani</strong>. The main objective is to spread Quranic teachings and Arabic language rules in an easy way.",
                 coursesTitle: "Our Special Courses",
-                coursesHint: "Click the button below to view complete details of any course:",
+                coursesHint: "Click the button below to view complete details and features of any course:",
                 btnMore: "Read More Details",
-                featTitle: "Features & Details:",
-
-                c1Title: "📖 Quran Nazra Course",
-                c1Short: "Learn fluent Quran recitation with proper Tajweed and Mukharij.",
-                c1List: "<li>Correct pronunciation of letters and Mukharij.</li><li>Practical application of Tajweed rules.</li><li>Training for fluent and beautiful recitation.</li>",
-
-                c2Title: "🟢 Madani Qaida Course",
-                c2Short: "The first step for kids and adults to read the Quran.",
-                c2List: "<li>Recognition of Arabic alphabet.</li><li>Easy methods for Harkat, Tanween, and Madd.</li><li>An excellent foundation for beginners.</li>",
-
-                c3Title: "🗣️ Arabic Conversation Course",
-                c3Short: "The best way to master daily communication and sentence building.",
-                c3List: "<li>Daily usage of vocabulary and common phrases.</li><li>Practice building sentences fluently without cramming.</li><li>Special live interactive practice sessions.</li>",
-
-                c4Title: "✍️ Basic Arabic Grammar (Nahw & Sarf)",
-                c4Short: "A course to understand Arabic texts and avoid grammar mistakes.",
-                c4List: "<li>Identification of nouns, verbs, and particles.</li><li>Easy-to-understand study of core grammar rules.</li><li>Ability to analyze Quranic verses and texts.</li>",
-
-                c5Title: "📖 Short Quran & Islamic Studies",
-                c5Short: "Quran recitation with translation, basic jurisprudence, and Ahadith.",
-                c5List: "<li>Translation and brief Tafseer of selected verses.</li><li>Essential daily jurisprudence (Fiqh) regarding Salah and Taharah.</li><li>Memorization of authentic Ahadith and duas.</li>",
-
                 admTitle: "Online Admission",
                 admDesc: "If you want to enroll in any of our courses, click the button below to fill out the form:",
                 admBoxTitle: "Click below to submit the admission form:",
@@ -611,41 +555,6 @@
 
             document.getElementById('courses-title').innerText = t.coursesTitle;
             document.getElementById('courses-hint').innerText = t.coursesHint;
-
-            // کورس 1
-            document.getElementById('c1-title').innerText = t.c1Title;
-            document.getElementById('c1-short').innerText = t.c1Short;
-            document.getElementById('c1-feat-title').innerText = t.featTitle;
-            document.getElementById('c1-list').innerHTML = t.c1List;
-            document.getElementById('c1-btn').innerText = t.btnMore;
-
-            // کورس 2
-            document.getElementById('c2-title').innerText = t.c2Title;
-            document.getElementById('c2-short').innerText = t.c2Short;
-            document.getElementById('c2-feat-title').innerText = t.featTitle;
-            document.getElementById('c2-list').innerHTML = t.c2List;
-            document.getElementById('c2-btn').innerText = t.btnMore;
-
-            // کورس 3
-            document.getElementById('c3-title').innerText = t.c3Title;
-            document.getElementById('c3-short').innerText = t.c3Short;
-            document.getElementById('c3-feat-title').innerText = t.featTitle;
-            document.getElementById('c3-list').innerHTML = t.c3List;
-            document.getElementById('c3-btn').innerText = t.btnMore;
-
-            // کورس 4
-            document.getElementById('c4-title').innerText = t.c4Title;
-            document.getElementById('c4-short').innerText = t.c4Short;
-            document.getElementById('c4-feat-title').innerText = t.featTitle;
-            document.getElementById('c4-list').innerHTML = t.c4List;
-            document.getElementById('c4-btn').innerText = t.btnMore;
-
-            // کورس 5
-            document.getElementById('c5-title').innerText = t.c5Title;
-            document.getElementById('c5-short').innerText = t.c5Short;
-            document.getElementById('c5-feat-title').innerText = t.featTitle;
-            document.getElementById('c5-list').innerHTML = t.c5List;
-            document.getElementById('c5-btn').innerText = t.btnMore;
 
             document.getElementById('adm-title').innerText = t.admTitle;
             document.getElementById('adm-desc').innerText = t.admDesc;
