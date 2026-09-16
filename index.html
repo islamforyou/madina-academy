@@ -18,7 +18,7 @@
             color: #333;
             line-height: 1.8;
         }
-        /* فلوٹنگ لینگویج سلیکٹر (موبائل اور ڈیسک ٹاپ کے لیے بہترین ایڈجسٹمنٹ) */
+        /* فلوٹنگ لینگویج سلیکٹر */
         .lang-switcher-box {
             position: absolute;
             top: 15px;
@@ -119,10 +119,10 @@
             padding-bottom: 5px;
             display: inline-block;
         }
-        /* کورسز کارڈز */
+        /* کورسز کارڈز اور ڈراپ ڈاؤن تفصیلات */
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -130,18 +130,60 @@
             background: #f1f8e9;
             border: 1px solid #c8e6c9;
             padding: 20px;
-            border-radius: 6px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            text-align: right;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .course-card h3 {
             color: #2e7d32;
             margin-bottom: 10px;
             font-size: 1.3rem;
+            text-align: center;
+        }
+        .course-short-desc {
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        /* چھپی ہوئی تفصیلات جو کلک کرنے پر ظاہر ہوں گی */
+        .course-details {
+            display: none;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px dashed #81c784;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .course-details ul {
+            padding-right: 20px;
+            margin-top: 5px;
+        }
+        .course-details li {
+            margin-bottom: 5px;
+        }
+        /* ٹوگل بٹن */
+        .details-btn {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        .details-btn:hover {
+            background-color: #004d40;
         }
         /* ایڈمیشن باکس */
         .admission-box {
@@ -152,20 +194,13 @@
             text-align: center;
             margin-top: 20px;
         }
-        /* رابطہ فارم اور معلومات */
+        /* رابطہ معلومات */
         .contact-info {
             font-size: 1.05rem;
             margin-top: 10px;
             line-height: 2;
         }
-        /* زبان کے لحاظ سے شو/ہائڈ کرنے کی کلاسز */
-        .lang-content {
-            display: none;
-        }
-        .lang-content.active {
-            display: block;
-        }
-        /* تیرتا ہوا (Floating) واٹس ایپ بٹن */
+        /* فلوٹنگ واٹس ایپ بٹن */
         .float-whatsapp {
             position: fixed;
             width: 55px;
@@ -204,7 +239,6 @@
 
     <!-- ہیڈر -->
     <header>
-        <!-- زبان تبدیل کرنے والا باکس -->
         <div class="lang-switcher-box">
             <span>🌐</span>
             <select id="langSelect" onchange="changeLanguage(this.value)">
@@ -225,7 +259,7 @@
         <a href="#courses" id="nav-courses">ہمارے کورسز</a>
         <a href="#admission" class="admission-btn" id="nav-admission">📝 آن لائن داخلہ</a>
         <a href="#contact" id="nav-contact">رابطہ</a>
-        <a href="https://wa.me/254180111857?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85!%20%D9%85%D9%8A%DA%BA%20%D9%85%D8%AF%DB%8C%D9%86%DB%81%20%D8%A7%DA%A9%DB%8C%DA%88%D9%85%DB%81%20%DA%A9%DB%92%20%DA%A9%D9%88%D8%B1%D8%B3%D8%B2%20%DA%A9%DB%92%20%D8%A8%D8%A7%D8%B1%DB%92%20%D9%85%DB%8C%DA%BA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%DA%86%D8%A7%DB%81%D8%AA%D8%A7%20%DB%81%DB%8Cں。" target="_blank" class="whatsapp-btn" id="nav-wa">💬 واٹس ایپ چیٹ</a>
+        <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20کورسز%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" target="_blank" class="whatsapp-btn" id="nav-wa">💬 واٹس ایپ چیٹ</a>
     </nav>
 
     <!-- مین کنٹینر -->
@@ -234,42 +268,114 @@
         <!-- ہوم / خوش آمدید -->
         <section id="home">
             <h2 id="welcome-title">خوش آمدید</h2>
-            <p id="welcome-desc">مدینہ اکیڈمی میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں قرآن پاک کی تلاوت اور عربی بول چال میں مہارت حاصل کرنا چاہتے ہیں۔</p>
+            <p id="welcome-desc">مدینہ اکیڈمی میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں قرآن پاک کی درست تلاوت اور عربی زبان و گرامر میں مہارت حاصل کرنا چاہتے ہیں۔</p>
         </section>
 
         <!-- ہمارے بارے میں -->
         <section id="about">
             <h2 id="about-title">ہمارے بارے میں</h2>
-            <p id="about-desc">مدینہ اکیڈمی کے بانی اور معلم <strong>ابو العربی مدنی</strong> ہیں۔ اکیڈمی کا بنیادی مقصد قرآن و سنت کی تعلیمات کو آسان فہم انداز میں عامۃ الناس تک پہنچانا ہے۔</p>
+            <p id="about-desc">مدینہ اکیڈمی کے بانی اور معلم <strong>ابو العربی مدنی</strong> ہیں۔ اکیڈمی کا بنیادی مقصد قرآن و سنت کی تعلیمات اور عربی زبان کے قواعد کو آسان فہم انداز میں عامۃ الناس تک پہنچانا ہے۔</p>
         </section>
 
         <!-- کورسز -->
         <section id="courses">
             <h2 id="courses-title">ہمارے خصوصی کورسز</h2>
+            <p style="margin-bottom: 15px; color: #555; font-size: 0.95rem;" id="courses-hint">کسی بھی کورس کی مکمل تفصیلات دیکھنے کے لیے نیچے دیے گئے بٹن پر کلک کریں:</p>
+            
             <div class="courses-grid">
+                
+                <!-- کورس 1: ناظرہ قرآن -->
                 <div class="course-card">
-                    <h3 id="course4-title">📖 ناظرہ قرآن پاک کورس</h3>
-                    <p id="course4-desc">درست تجوید اور مخارج کے ساتھ قرآن پاک کی روانی سے تلاوت سیکھیں۔</p>
+                    <div>
+                        <h3 id="c1-title">📖 ناظرہ قرآن پاک کورس</h3>
+                        <p class="course-short-desc" id="c1-short">درست تجوید اور مخارج کے ساتھ قرآن پاک کی روانی سے تلاوت سیکھیں۔</p>
+                        <div class="course-details" id="c1-details">
+                            <strong id="c1-feat-title">خصوصیات و تفصیل:</strong>
+                            <ul id="c1-list">
+                                <li>حروف کی درست ادائیگی اور مخارج کی مشق۔</li>
+                                <li>قواعدِ تجوید کا عملی نفاذ۔</li>
+                                <li>روانی اور خوبصورت لہجے میں تلاوت کی تربیت۔</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="details-btn" onclick="toggleDetails('c1-details', this)" id="c1-btn">مزید تفصیلات پڑھیں</button>
                 </div>
+
+                <!-- کورس 2: مدنی قاعدہ -->
                 <div class="course-card">
-                    <h3 id="course5-title">🟢 مدنی قاعدہ کورس</h3>
-                    <p id="course5-desc">بچوں اور بڑوں کے لیے قرآن پاک پڑھنے کی پہلی سیڑھی، تجوید کے اصولوں کے ساتھ۔</p>
+                    <div>
+                        <h3 id="c2-title">🟢 مدنی قاعدہ کورس</h3>
+                        <p class="course-short-desc" id="c2-short">بچوں اور بڑوں کے لیے قرآن پاک پڑھنے کی پہلی سیڑھی۔</p>
+                        <div class="course-details" id="c2-details">
+                            <strong id="c2-feat-title">خصوصیات و تفصیل:</strong>
+                            <ul id="c2-list">
+                                <li>حروفِ تہجی اور ان کی مفردات و مرکبات شناخت۔</li>
+                                <li>حرکات، تنوین اور مدّ کا آسان فہم طریقہ۔</li>
+                                <li>ابتدائی طلباء کے لیے بہترین بنیاد۔</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="details-btn" onclick="toggleDetails('c2-details', this)" id="c2-btn">مزید تفصیلات پڑھیں</button>
                 </div>
+
+                <!-- کورس 3: عربی بول چال -->
                 <div class="course-card">
-                    <h3 id="course1-title">🗣️ عربی بول چال کورس</h3>
-                    <p id="course1-desc">روزمرہ کی گفتگو اور عربی جملے بنانے کا طریقہ سیکھیں۔</p>
+                    <div>
+                        <h3 id="c3-title">🗣️ عربی بول چال کورس</h3>
+                        <p class="course-short-desc" id="c3-short">روزمرہ کی گفتگو اور عربی جملے بنانے کا بہترین طریقہ۔</p>
+                        <div class="course-details" id="c3-details">
+                            <strong id="c3-feat-title">خصوصیات و تفصیل:</strong>
+                            <ul id="c3-list">
+                                <li>روزمرہ استعمال ہونے والے عربی الفاظ اور محاورے۔</li>
+                                <li>بغیر رٹے روانی سے جملے تشکیل دینے کی مشق۔</li>
+                                <li>خصوصی لائیو پریکٹس سیشنز۔</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="details-btn" onclick="toggleDetails('c3-details', this)" id="c3-btn">مزید تفصیلات پڑھیں</button>
                 </div>
+
+                <!-- کورس 4: نحو و صرف -->
                 <div class="course-card">
-                    <h3 id="course2-title">📖 شارٹ قرآن و فہمِ دین کورس</h3>
-                    <p id="course2-desc">تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل اور احادیث کی تعلیم۔</p>
+                    <div>
+                        <h3 id="c4-title">✍️ بنیادی نحو و صرف (قواعدِ عربی)</h3>
+                        <p class="course-short-desc" id="c4-short">عربی عبارت کو سمجھنے اور گرامر کی غلطیوں سے بچنے کا کورس۔</p>
+                        <div class="course-details" id="c4-details">
+                            <strong id="c4-feat-title">خصوصیات و تفصیل:</strong>
+                            <ul id="c4-list">
+                                <li>اسم، فعل اور حرف کی شناخت۔</li>
+                                <li>عربی گرامر کے بنیادی قوانین کا آسان فہم مطالعہ۔</li>
+                                <li>قرآنی آیات اور عبات کی ترکیب کرنے کی صلاحیت۔</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="details-btn" onclick="toggleDetails('c4-details', this)" id="c4-btn">مزید تفصیلات پڑھیں</button>
                 </div>
+
+                <!-- کورس 5: شارٹ قرآن و فہم دین -->
+                <div class="course-card">
+                    <div>
+                        <h3 id="c5-title">📖 شارٹ قرآن و فہمِ دین کورس</h3>
+                        <p class="course-short-desc" id="c5-short">تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل اور احادیث۔</p>
+                        <div class="course-details" id="c5-details">
+                            <strong id="c5-feat-title">خصوصیات و تفصیل:</strong>
+                            <ul id="c5-list">
+                                <li>منتخب آیات کا ترجمہ و تفسیر۔</li>
+                                <li>نماز، طہارت اور روزمرہ کے ضروری فقہی مسائل۔</li>
+                                <li>احادیثِ مبارکہ اور مسنون دعاؤں کا حفظ۔</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="details-btn" onclick="toggleDetails('c5-details', this)" id="c5-btn">مزید تفصیلات پڑھیں</button>
+                </div>
+
             </div>
         </section>
 
         <!-- آن لائن ایڈمیشن سیکشن -->
         <section id="admission">
             <h2 id="adm-title">آن لائن داخلہ (Admission)</h2>
-            <p id="adm-desc">اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا چاہتے ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں:</p>
+            <p id="adm-desc">اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا चाहते ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں:</p>
             <div class="admission-box">
                 <p style="font-size: 1.1rem; margin-bottom: 15px; font-weight: bold; color: #e65100;" id="adm-box-title">داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:</p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUPeGuIIxhfc49VG5FET4e6yPVNcNrAQOBuDIWA0WGrDnMDw/viewform?usp=publish-editor" target="_blank" style="background-color: #ff8f00; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 1.1rem;" id="adm-btn">فارم کھولیں اور داخلہ لیں</a>
@@ -291,11 +397,275 @@
 
     </div>
 
-    <!-- سکرین کے کونے پر تیرتا ہوا واٹس ایپ کا گول آئیکن -->
+    <!-- فلوٹنگ واٹس ایپ بٹن -->
     <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" class="float-whatsapp" id="float-wa" target="_blank">
         💬
     </a>
 
     <!-- فوٹر -->
     <footer>
-        <p id="footer-text">جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی</p
+        <p id="footer-text">جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی</p>
+    </footer>
+
+    <!-- جاوا اسکرپٹ -->
+    <script>
+        // تفصیلات دکھانے یا چھپانے کا فنکشن
+        function toggleDetails(id, btn) {
+            const detailsBox = document.getElementById(id);
+            if (detailsBox.style.display === "block") {
+                detailsBox.style.display = "none";
+                // زبان کے لحاظ سے بٹن کا متن تبدیل کرنا
+                const lang = document.getElementById('html-root').getAttribute('lang');
+                if (lang === 'ar') btn.innerText = "عرض التفاصيل";
+                else if (lang === 'en') btn.innerText = "Read More Details";
+                else btn.innerText = "مزید تفصیلات پڑھیں";
+            } else {
+                detailsBox.style.display = "block";
+                const lang = document.getElementById('html-root').getAttribute('lang');
+                if (lang === 'ar') btn.innerText = "إخفاء التفاصيل";
+                else if (lang === 'en') btn.innerText = "Hide Details";
+                else btn.innerText = "تفصیلات چھپائیں";
+            }
+        }
+
+        const translations = {
+            ur: {
+                title: "مدینہ اکیڈمی",
+                headerTitle: "مدینہ اکیڈمی",
+                headerSub: "قرآن و عربی زبان کا بہترین ادارہ (زیرِ نگرانی: ابو العربی مدنی)",
+                navHome: "ہوم پیج",
+                navAbout: "تعارف",
+                navCourses: "ہمارے کورسز",
+                navAdmission: "📝 آن لائن داخلہ",
+                navContact: "رابطہ",
+                navWa: "💬 واٹس ایپ چیٹ",
+                welcomeTitle: "خوش آمدید",
+                welcomeDesc: "مدینہ اکیڈمی میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں قرآن پاک کی درست تلاوت اور عربی زبان و گرامر میں مہارت حاصل کرنا چاہتے ہیں۔",
+                aboutTitle: "ہمارے بارے میں",
+                aboutDesc: "مدینہ اکیڈمی کے بانی اور معلم <strong>ابو العربی مدنی</strong> ہیں۔ اکیڈمی کا بنیادی مقصد قرآن و سنت کی تعلیمات اور عربی زبان کے قواعد کو آسان فہم انداز میں عامۃ الناس تک پہنچانا ہے۔",
+                coursesTitle: "ہمارے خصوصی کورسز",
+                coursesHint: "کسی بھی کورس کی مکمل تفصیلات دیکھنے کے لیے نیچے دیے گئے بٹن پر کلک کریں:",
+                btnMore: "مزید تفصیلات پڑھیں",
+                featTitle: "خصوصیات و تفصیل:",
+                
+                c1Title: "📖 ناظرہ قرآن پاک کورس",
+                c1Short: "درست تجوید اور مخارج کے ساتھ قرآن پاک کی روانی سے تلاوت سیکھیں۔",
+                c1List: "<li>حروف کی درست ادائیگی اور مخارج کی مشق۔</li><li>قواعدِ تجوید کا عملی نفاذ۔</li><li>روانی اور خوبصورت لہجے میں تلاوت کی تربیت۔</li>",
+                
+                c2Title: "🟢 مدنی قاعدہ کورس",
+                c2Short: "بچوں اور بڑوں کے لیے قرآن پاک پڑھنے کی پہلی سیڑھی۔",
+                c2List: "<li>حروفِ تہجی اور ان کی شناخت۔</li><li>حرکات، تنوین اور مدّ کا آسان فہم طریقہ۔</li><li>ابتدائی طلباء کے لیے بہترین بنیاد۔</li>",
+                
+                c3Title: "🗣️ عربی بول چال کورس",
+                c3Short: "روزمرہ کی گفتگو اور عربی جملے بنانے کا بہترین طریقہ۔",
+                c3List: "<li>روزمرہ استعمال ہونے والے عربی الفاظ اور محاورے۔</li><li>بغیر رٹے روانی سے جملے تشکیل دینے کی مشق۔</li><li>خصوصی لائیو پریکٹس سیشنز۔</li>",
+                
+                c4Title: "✍️ بنیادی نحو و صرف (قواعدِ عربی)",
+                c4Short: "عربی عبارت کو سمجھنے اور گرامر کی غلطیوں سے بچنے کا کورس۔",
+                c4List: "<li>اسم، فعل اور حرف کی شناخت۔</li><li>عربی گرامر کے بنیادی قوانین کا آسان فہم مطالعہ۔</li><li>قرآنی آیات اور عبارات کی ترکیب کرنے کی صلاحیت۔</li>",
+                
+                c5Title: "📖 شارٹ قرآن و فہمِ دین کورس",
+                c5Short: "تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل اور احادیث۔",
+                c5List: "<li>منتخب آیات کا ترجمہ و تفسیر۔</li><li>نماز، طہارت اور روزمرہ کے ضروری فقہی مسائل۔</li><li>احادیثِ مبارکہ اور مسنون دعاؤں کا حفظ۔</li>",
+
+                admTitle: "آن لائن داخلہ (Admission)",
+                admDesc: "اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا चाहते ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں:",
+                admBoxTitle: "داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:",
+                admBtn: "فارم کھولیں اور داخلہ لیں",
+                contactTitle: "رابطہ کیجئے",
+                managerLabel: "منتظم:",
+                phoneLabel: "فون نمبر / واٹس ایپ:",
+                emailLabel: "ای میل:",
+                emailVal: "islamforyou.academy@gmail.com",
+                waLink: "واٹس ایپ پر میسج کریں",
+                footerText: "جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی",
+                dir: "rtl"
+            },
+            ar: {
+                title: "أكاديمية المدينة",
+                headerTitle: "أكاديمية المدينة",
+                headerSub: "المعهد الأمثل للقرآن الكريم واللغة العربية (بإشراف: أبو العربي المدني)",
+                navHome: "الرئيسية",
+                navAbout: "من نحن",
+                navCourses: "دوراتنا",
+                navAdmission: "📝 التسجيل الإلكتروني",
+                navContact: "اتصل بنا",
+                navWa: "💬 واتساب",
+                welcomeTitle: "أهلاً وسهلاً",
+                welcomeDesc: "مرحباً بكم في أكاديمية المدينة. تم تأسيس هذه الأكاديمية للطلاب الراغبين في إتقان تلاوة القرآن الكريم وقواعد اللغة العربية في وقت قصير.",
+                aboutTitle: "من نحن",
+                aboutDesc: "مؤسس ومعلم أكاديمية المدينة هو <strong>أبو العربي المدني</strong>. الهدف الأساسي هو تقريب تعليم الكتاب والسنة وقواعد اللغة العربية للناس بأسلوب سهل.",
+                coursesTitle: "دوراتنا الخاصة",
+                coursesHint: "انقر على الزر أدناه لعرض التفاصيل الكاملة لأي دورة:",
+                btnMore: "عرض التفاصيل الكاملة",
+                featTitle: "المميزات والتفاصيل:",
+
+                c1Title: "📖 دورة تلاوة القرآن الكريم",
+                c1Short: "تعلم تلاوة القرآن בطلاقة مع التجويد الصحيح والمخارج.",
+                c1List: "<li>النطق الصحيح للحروف ومخارجها.</li><li>التطبيق العملي لقواعد التجويد.</li><li>تدريب على التلاوة بطلاقة وبصوت حسن.</li>",
+
+                c2Title: "🟢 القاعدة المدنية",
+                c2Short: "الخطوة الأولى لقراءة القرآن الكريم للأطفال والكبار.",
+                c2List: "<li>الحروف الهجائية ومعرفتها بدقة.</li><li>طريقة سهلة للحركات والتنوين والمدود.</li><li>أساس ممتاز للطلاب المبتدئين.</li>",
+
+                c3Title: "🗣️ دورة المحادثة العربية",
+                c3Short: "أفضل طريقة للمحادثة اليومية وبناء الجمل العربية.",
+                c3List: "<li>الكلمات والعبارات المستخدمة يومياً.</li><li>ممارسة تكوين الجمل بطلاقة دون حفظ معقد.</li><li>جلسات تدريبية خاصة ومباشرة.</li>",
+
+                c4Title: "✍️ النحو والصرف الأساسي",
+                c4Short: "دورة لفهم النصوص العربية وتجنب الأخطاء النحوية.",
+                c4List: "<li>التعرف على الاسم والفعل والحرف.</li><li>دراسة سهلة لقواعد النحو العربي الأساسية.</li><li>القدرة على إعراب الآيات والنصوص.</li>",
+
+                c5Title: "📖 دورة القرآن والفهم الديني",
+                c5Short: "تلاوة القرآن مع الترجمة، المسائل الفقهية، والأحاديث.",
+                c5List: "<li>ترجم وتفسير الآيات المختارة.</li><li>مسائل الفقه الضرورية للصلاة والطهارة.</li><li>حفظ الأحاديث النبوية والأذكار اليومية.</li>",
+
+                admTitle: "التسجيل الإلكتروني (Admission)",
+                admDesc: "إذا كنت تريد التسجيل في أي من دوراتنا، انقر فوق الزر أدناه لملء النموذج:",
+                admBoxTitle: "انقر أدناه لإرسال استمارة التسجيل:",
+                admBtn: "افتح النموذج وسجل الآن",
+                contactTitle: "اتصل بنا",
+                managerLabel: "المشرف:",
+                phoneLabel: "رقم الهاتف / واتساب:",
+                emailLabel: "البريد الإلكتروني:",
+                emailVal: "islamforyou.academy@gmail.com",
+                waLink: "راسلنا عبر واتساب",
+                footerText: "جميع الحقوق محفوظة &copy; 2026 - أكاديمية المدينة",
+                dir: "rtl"
+            },
+            en: {
+                title: "Madina Academy",
+                headerTitle: "Madina Academy",
+                headerSub: "The Best Institute for Quran & Arabic Language (Managed by: Abu Al-Arabi Madani)",
+                navHome: "Home",
+                navAbout: "About Us",
+                navCourses: "Courses",
+                navAdmission: "📝 Online Admission",
+                navContact: "Contact",
+                navWa: "💬 WhatsApp Chat",
+                welcomeTitle: "Welcome",
+                welcomeDesc: "Welcome to Madina Academy. This institute is established for students who want to master Quran recitation and Arabic grammar quickly.",
+                aboutTitle: "About Us",
+                aboutDesc: "The founder and teacher of Madina Academy is <strong>Abu Al-Arabi Madani</strong>. The main objective is to spread Quranic teachings and Arabic language rules in an easy way.",
+                coursesTitle: "Our Special Courses",
+                coursesHint: "Click the button below to view complete details of any course:",
+                btnMore: "Read More Details",
+                featTitle: "Features & Details:",
+
+                c1Title: "📖 Quran Nazra Course",
+                c1Short: "Learn fluent Quran recitation with proper Tajweed and Mukharij.",
+                c1List: "<li>Correct pronunciation of letters and Mukharij.</li><li>Practical application of Tajweed rules.</li><li>Training for fluent and beautiful recitation.</li>",
+
+                c2Title: "🟢 Madani Qaida Course",
+                c2Short: "The first step for kids and adults to read the Quran.",
+                c2List: "<li>Recognition of Arabic alphabet.</li><li>Easy methods for Harkat, Tanween, and Madd.</li><li>An excellent foundation for beginners.</li>",
+
+                c3Title: "🗣️ Arabic Conversation Course",
+                c3Short: "The best way to master daily communication and sentence building.",
+                c3List: "<li>Daily usage of vocabulary and common phrases.</li><li>Practice building sentences fluently without cramming.</li><li>Special live interactive practice sessions.</li>",
+
+                c4Title: "✍️ Basic Arabic Grammar (Nahw & Sarf)",
+                c4Short: "A course to understand Arabic texts and avoid grammar mistakes.",
+                c4List: "<li>Identification of nouns, verbs, and particles.</li><li>Easy-to-understand study of core grammar rules.</li><li>Ability to analyze Quranic verses and texts.</li>",
+
+                c5Title: "📖 Short Quran & Islamic Studies",
+                c5Short: "Quran recitation with translation, basic jurisprudence, and Ahadith.",
+                c5List: "<li>Translation and brief Tafseer of selected verses.</li><li>Essential daily jurisprudence (Fiqh) regarding Salah and Taharah.</li><li>Memorization of authentic Ahadith and duas.</li>",
+
+                admTitle: "Online Admission",
+                admDesc: "If you want to enroll in any of our courses, click the button below to fill out the form:",
+                admBoxTitle: "Click below to submit the admission form:",
+                admBtn: "Open Form & Enroll",
+                contactTitle: "Contact Us",
+                managerLabel: "Manager:",
+                phoneLabel: "Phone / WhatsApp:",
+                emailLabel: "Email:",
+                emailVal: "islamforyou.academy@gmail.com",
+                waLink: "Message via WhatsApp",
+                footerText: "All Rights Reserved &copy; 2026 - Madina Academy",
+                dir: "ltr"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.getElementById('html-root').setAttribute('lang', lang);
+            document.getElementById('html-root').setAttribute('dir', t.dir);
+            document.getElementById('site-title').innerText = t.title;
+
+            document.getElementById('header-title').innerText = t.headerTitle;
+            document.getElementById('header-sub').innerText = t.headerSub;
+            document.getElementById('nav-home').innerText = t.navHome;
+            document.getElementById('nav-about').innerText = t.navAbout;
+            document.getElementById('nav-courses').innerText = t.navCourses;
+            document.getElementById('nav-admission').innerText = t.navAdmission;
+            document.getElementById('nav-contact').innerText = t.navContact;
+            document.getElementById('nav-wa').innerText = t.navWa;
+
+            document.getElementById('welcome-title').innerText = t.welcomeTitle;
+            document.getElementById('welcome-desc').innerText = t.welcomeDesc;
+            document.getElementById('about-title').innerText = t.aboutTitle;
+            document.getElementById('about-desc').innerHTML = t.aboutDesc;
+
+            document.getElementById('courses-title').innerText = t.coursesTitle;
+            document.getElementById('courses-hint').innerText = t.coursesHint;
+
+            // کورس 1
+            document.getElementById('c1-title').innerText = t.c1Title;
+            document.getElementById('c1-short').innerText = t.c1Short;
+            document.getElementById('c1-feat-title').innerText = t.featTitle;
+            document.getElementById('c1-list').innerHTML = t.c1List;
+            document.getElementById('c1-btn').innerText = t.btnMore;
+
+            // کورس 2
+            document.getElementById('c2-title').innerText = t.c2Title;
+            document.getElementById('c2-short').innerText = t.c2Short;
+            document.getElementById('c2-feat-title').innerText = t.featTitle;
+            document.getElementById('c2-list').innerHTML = t.c2List;
+            document.getElementById('c2-btn').innerText = t.btnMore;
+
+            // کورس 3
+            document.getElementById('c3-title').innerText = t.c3Title;
+            document.getElementById('c3-short').innerText = t.c3Short;
+            document.getElementById('c3-feat-title').innerText = t.featTitle;
+            document.getElementById('c3-list').innerHTML = t.c3List;
+            document.getElementById('c3-btn').innerText = t.btnMore;
+
+            // کورس 4
+            document.getElementById('c4-title').innerText = t.c4Title;
+            document.getElementById('c4-short').innerText = t.c4Short;
+            document.getElementById('c4-feat-title').innerText = t.featTitle;
+            document.getElementById('c4-list').innerHTML = t.c4List;
+            document.getElementById('c4-btn').innerText = t.btnMore;
+
+            // کورس 5
+            document.getElementById('c5-title').innerText = t.c5Title;
+            document.getElementById('c5-short').innerText = t.c5Short;
+            document.getElementById('c5-feat-title').innerText = t.featTitle;
+            document.getElementById('c5-list').innerHTML = t.c5List;
+            document.getElementById('c5-btn').innerText = t.btnMore;
+
+            document.getElementById('adm-title').innerText = t.admTitle;
+            document.getElementById('adm-desc').innerText = t.admDesc;
+            document.getElementById('adm-box-title').innerText = t.admBoxTitle;
+            document.getElementById('adm-btn').innerText = t.admBtn;
+
+            document.getElementById('contact-title').innerText = t.contactTitle;
+            document.getElementById('manager-label').innerText = t.managerLabel;
+            document.getElementById('phone-label').innerText = t.phoneLabel;
+            document.getElementById('email-label').innerText = t.emailLabel;
+            
+            const emailEls = document.querySelectorAll('#email-label');
+            emailEls.forEach(el => {
+                el.nextSibling.nodeValue = " " + t.emailVal;
+            });
+
+            document.getElementById('wa-link').innerText = t.waLink;
+            document.getElementById('footer-text').innerHTML = t.footerText;
+        }
+    </script>
+
+</body>
+</html>
