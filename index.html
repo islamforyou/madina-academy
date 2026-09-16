@@ -39,19 +39,36 @@
             background-color: #00796b;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             padding: 10px;
         }
         nav a {
             color: white;
             text-decoration: none;
-            padding: 8px 20px;
-            margin: 0 5px;
-            font-size: 1.1rem;
+            padding: 8px 15px;
+            margin: 5px;
+            font-size: 1rem;
             transition: background 0.3s;
             border-radius: 4px;
         }
         nav a:hover {
             background-color: #004d40;
+        }
+        /* ایڈمیشن بٹن کا خاص رنگ (پیلا/سنہری) */
+        nav a.admission-btn {
+            background-color: #ff8f00;
+            font-weight: bold;
+        }
+        nav a.admission-btn:hover {
+            background-color: #e65100;
+        }
+        /* واٹس ایپ نیو بٹن کا خاص رنگ */
+        nav a.whatsapp-btn {
+            background-color: #25D366;
+            font-weight: bold;
+        }
+        nav a.whatsapp-btn:hover {
+            background-color: #1EBE5D;
         }
         /* مین کنٹینر */
         .container {
@@ -99,10 +116,43 @@
             margin-bottom: 10px;
             font-size: 1.4rem;
         }
+        /* ایڈمیشن باکس */
+        .admission-box {
+            background: #fff8e1;
+            border: 2px dashed #ffb300;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
         /* رابطہ فارم اور معلومات */
         .contact-info {
             font-size: 1.1rem;
             margin-top: 10px;
+        }
+        /* تیرتا ہوا (Floating) واٹس ایپ بٹن */
+        .float-whatsapp {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .float-whatsapp:hover {
+            background-color: #1ebe5d;
+            transform: scale(1.1);
         }
         /* فوٹر */
         footer {
@@ -123,12 +173,14 @@
         <p>عربی زبان میں روانی اور شارٹ دینی کورسز کا بہترین ادارہ (زیرِ نگرانی: ابو العربی مدنی)</p>
     </header>
 
-    <!-- نیویگیشن -->
+    <!-- نیویگیشن بار -->
     <nav>
         <a href="#home">ہوم پیج</a>
         <a href="#about">تعارف</a>
         <a href="#courses">ہمارے کورسز</a>
+        <a href="#admission" class="admission-btn">📝 آن لائن داخلہ</a>
         <a href="#contact">رابطہ</a>
+        <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20کورسز%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" target="_blank" class="whatsapp-btn">💬 واٹس ایپ چیٹ</a>
     </nav>
 
     <!-- مین سیکشنز -->
@@ -165,6 +217,16 @@
             </div>
         </section>
 
+        <!-- آن لائن ایڈمیشن سیکشن -->
+        <section id="admission">
+            <h2>آن لائن داخلہ (Admission)</h2>
+            <p>اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا چاہتے ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں اور ڈائریکٹ داخلہ لیں:</p>
+            <div class="admission-box">
+                <p style="font-size: 1.2rem; margin-bottom: 15px; font-weight: bold; color: #e65100;">داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUPeGuIIxhfc49VG5FET4e6yPVNcNrAQOBuDIWA0WGrDnMDw/viewform?usp=publish-editor" target="_blank" style="background-color: #ff8f00; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 1.1rem;">فارم کھولیں اور داخلہ لیں</a>
+            </div>
+        </section>
+
         <!-- رابطہ -->
         <section id="contact">
             <h2>رابطہ کیجئے</h2>
@@ -172,10 +234,18 @@
                 <p><strong>منتظم:</strong> ابو العربی مدنی</p>
                 <p><strong>فون نمبر / واٹس ایپ:</strong> +254180111857</p>
                 <p><strong>ای میل:</strong> info@madinaacademy.com</p>
+                <p style="margin-top: 15px;">
+                    <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20جاننا%20چاہتا ہوں۔" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;">واٹس ایپ پر میسج کریں</a>
+                </p>
             </div>
         </section>
 
     </div>
+
+    <!-- سکرین کے کونے پر تیرتا ہوا واٹس ایپ کا گول آئیکن -->
+    <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" class="float-whatsapp" target="_blank">
+        💬
+    </a>
 
     <!-- فوٹر -->
     <footer>
