@@ -154,13 +154,6 @@
             font-size: 1.1rem;
             margin-top: 10px;
         }
-        /* زبان کے لحاظ سے شو/ہائڈ کرنے کی کلاسز */
-        .lang-content {
-            display: none;
-        }
-        .lang-content.active {
-            display: block;
-        }
         /* تیرتا ہوا (Floating) واٹس ایپ بٹن */
         .float-whatsapp {
             position: fixed;
@@ -221,7 +214,7 @@
         <a href="#courses" id="nav-courses">ہمارے کورسز</a>
         <a href="#admission" class="admission-btn" id="nav-admission">📝 آن لائن داخلہ</a>
         <a href="#contact" id="nav-contact">رابطہ</a>
-        <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20کورسز%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" target="_blank" class="whatsapp-btn" id="nav-wa">💬 واٹس ایپ چیٹ</a>
+        <a href="https://wa.me/254180111857?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85!%20%D9%85%D9%8A%DBA%20%D9%85%D8%AF%DB%8C%D9%86%DB%81%20%D8%A7%DA%A9%DB%8C%DA%88%D9%85%DB%8C%20%DA%A9%DB%92%20%DA%A9%D9%88%D8%B1%D8%B3%D8%B2%20%DA%A9%DB%92%20%D8%A8%D8%A7%D8%B1%DB%92%20%D9%85%DB%8C%DA%BA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%DA%AC%DB%8C%D8%A7%20%DA%A9%DB%81%20%D8%A2%D9%BE%20%DA%A9%D8%B1%D8%AA%D8%A7%20%DB%81%D9%88%DA%BA%D8%C" target="_blank" class="whatsapp-btn" id="nav-wa">💬 واٹس ایپ چیٹ</a>
     </nav>
 
     <!-- مین کنٹینر -->
@@ -284,7 +277,7 @@
     </div>
 
     <!-- سکرین کے کونے پر تیرتا ہوا واٹس ایپ کا گول آئیکن -->
-    <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" class="float-whatsapp" target="_blank">
+    <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" class="float-whatsapp" id="float-wa" target="_blank">
         💬
     </a>
 
@@ -293,7 +286,7 @@
         <p id="footer-text">جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی</p>
     </footer>
 
-    <!-- زبان بدلنے کا جاوا اسکرپٹ کوڈ -->
+    <!-- زبان اور واٹس ایپ میسج بدلنے کا جاوا اسکرپٹ کوڈ -->
     <script>
         const translations = {
             ur: {
@@ -327,6 +320,7 @@
                 emailLabel: "ای میل:",
                 waLink: "واٹس ایپ پر میسج کریں",
                 footerText: "جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی",
+                waMsg: "السلام علیکم! میں مدینہ اکیڈمی کے کورسز کے بارے میں معلومات چاہتا ہوں۔",
                 dir: "rtl"
             },
             ar: {
@@ -360,6 +354,7 @@
                 emailLabel: "البريد الإلكتروني:",
                 waLink: "راسلنا عبر واتساب",
                 footerText: "جميع الحقوق محفوظة &copy; 2026 - أكاديمية المدينة",
+                waMsg: "السلام عليكم! أريغب في معرفة المزيد عن دورات أكاديمية المدينة.",
                 dir: "rtl"
             },
             en: {
@@ -393,6 +388,7 @@
                 emailLabel: "Email:",
                 waLink: "Message via WhatsApp",
                 footerText: "All Rights Reserved &copy; 2026 - Madina Academy",
+                waMsg: "Assalamu Alaikum! I would like to get information about the courses at Madina Academy.",
                 dir: "ltr"
             }
         };
@@ -438,6 +434,14 @@
             document.getElementById('email-label').innerText = t.emailLabel;
             document.getElementById('wa-link').innerText = t.waLink;
             document.getElementById('footer-text').innerHTML = t.footerText;
+
+            // واٹس ایپ لنکس کو زبان کے حساب سے اپ ڈیٹ کرنا
+            const encodedMsg = encodeURIComponent(t.waMsg);
+            const waUrl = `https://wa.me/254180111857?text=${encodedMsg}`;
+            
+            document.getElementById('nav-wa').setAttribute('href', waUrl);
+            document.getElementById('wa-link').setAttribute('href', waUrl);
+            document.getElementById('float-wa').setAttribute('href', waUrl);
         }
     </script>
 
