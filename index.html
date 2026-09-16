@@ -4,20 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="site-title">المدینہ اکیڈمی</title>
-    <!-- گوگل فونٹس -->
-    <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <!-- گوگل فونٹس اور ٹریڈیشنل عربی -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* جمیل نوری نستعلیق فونٹ کا لوکل یا آن لائن سٹائل */
+        @font-face {
+            font-family: 'Jameel Noori Nastaleeq';
+            src: url('https://www.fonts.net.pk/download/Jameel-Noori-Nastaleeq.ttf') format('truetype');
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: 'Cairo', 'Jameel Noori Nastaleeq', Arial, sans-serif;
+            font-family: 'Cairo', Arial, sans-serif;
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.8;
         }
+
+        /* اردو کے تمام عناصر کے لیے جمیل نوری نستعلیق */
+        h1, h2, h3, p, a, button, select, span, strong, label, div, nav, footer, 
+        .course-short-desc, .course-details, .contact-info, .admission-box {
+            font-family: 'Jameel Noori Nastaleeq', 'Cairo', Arial, sans-serif !important;
+        }
+
+        /* عربی اقتباسات کے لیے ٹریڈیشنل عربی */
+        .arabic-quote {
+            font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade New', serif !important;
+            background: #f9fbe7;
+            border-right: 4px solid #7cb342;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.3rem;
+            text-align: center;
+            color: #1b5e20;
+            font-weight: bold;
+            direction: rtl;
+        }
+
+        /* انگریزی سلیکٹر یا مخصوص حصوں کے لیے */
+        .lang-switcher-box select, option {
+            font-family: 'Cairo', Arial, sans-serif !important;
+        }
+
         /* فلوٹنگ لینگویج سلیکٹر */
         .lang-switcher-box {
             position: absolute;
@@ -42,7 +74,6 @@
             border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
-            font-family: inherit;
         }
         /* ہیڈر سیکشن */
         header {
@@ -54,12 +85,12 @@
             position: relative;
         }
         header h1 {
-            font-size: 2.3rem;
+            font-size: 2.5rem;
             margin-top: 10px;
             margin-bottom: 5px;
         }
         header p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #b2dfdb;
         }
         /* نیویگیشن بار */
@@ -75,7 +106,7 @@
             text-decoration: none;
             padding: 8px 15px;
             margin: 5px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: background 0.3s;
             border-radius: 4px;
         }
@@ -114,7 +145,7 @@
         section h2 {
             color: #004d40;
             margin-bottom: 15px;
-            font-size: 1.7rem;
+            font-size: 1.9rem;
             border-bottom: 2px solid #00796b;
             padding-bottom: 5px;
             display: inline-block;
@@ -140,16 +171,15 @@
         .course-card h3 {
             color: #2e7d32;
             margin-bottom: 10px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             text-align: center;
         }
         .course-short-desc {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #444;
             margin-bottom: 15px;
             text-align: center;
         }
-        /* چھپی ہوئی تفصیلی معلومات جو کلک کرنے پر ظاہر ہوں گی */
         .course-details {
             display: none;
             background: #ffffff;
@@ -157,22 +187,12 @@
             border-radius: 6px;
             border: 1px dashed #81c784;
             margin-bottom: 15px;
-            font-size: 0.98rem;
+            font-size: 1.05rem;
             color: #333;
             text-align: justify;
         }
         .course-details p {
             margin-bottom: 12px;
-        }
-        .arabic-quote {
-            background: #f9fbe7;
-            border-right: 4px solid #7cb342;
-            padding: 10px;
-            margin: 10px 0;
-            font-size: 1.05rem;
-            text-align: center;
-            color: #1b5e20;
-            font-weight: bold;
         }
         /* ٹوگل بٹن */
         .details-btn {
@@ -182,8 +202,7 @@
             padding: 9px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-family: inherit;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: bold;
             text-align: center;
             transition: background 0.3s;
@@ -203,7 +222,7 @@
         }
         /* رابطہ معلومات */
         .contact-info {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             margin-top: 10px;
             line-height: 2;
         }
@@ -238,7 +257,7 @@
             text-align: center;
             padding: 15px 0;
             margin-top: 40px;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
         }
     </style>
 </head>
@@ -287,7 +306,7 @@
         <!-- کورسز -->
         <section id="courses">
             <h2 id="courses-title">ہمارے خصوصی کورسز</h2>
-            <p style="margin-bottom: 15px; color: #555; font-size: 0.95rem;" id="courses-hint">کسی بھی کورس کی مکمل تفصیلات اور خصوصیات پڑھنے کے لیے نیچے دیے گئے بٹن پر کلک کریں:</p>
+            <p style="margin-bottom: 15px; color: #555; font-size: 1.05rem;" id="courses-hint">کسی بھی کورس کی مکمل تفصیلات اور خصوصیات پڑھنے کے لیے نیچے دیے گئے بٹن پر کلک کریں:</p>
             
             <div class="courses-grid">
                 
@@ -300,9 +319,9 @@
                         <div class="course-details" id="c1-details">
                             <p>قرآن مجید کو درست تلفظ، تجوید اور فہم کے ساتھ سیکھنا ہر مسلمان کی خواہش ہوتی ہے۔ یہ کورس ان تمام افراد کے لیے ایک بہترین موقع ہے جو قرآن کریم کی تلاوت کو خوبصورت، درست اور بااثر بنانا چاہتے ہیں۔ قرآن مجید اللہ تعالٰی کا مقدس کلام ہے اور اس کی تعلیم و تعلم کی فضیلت کا اندازہ نبی کریم ﷺ کے اس مبارک فرمان سے ہوتا ہے:</p>
                             
-                            <div class="arabic-quote">«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»<br><span style="font-size: 0.9rem; font-weight: normal; color: #333;">(تم میں سے بہترین شخص وہ ہے جو قرآن سیکھے اور اسے سکھائے۔ - صحیح بخاری)</span></div>
+                            <div class="arabic-quote">«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»<br><span style="font-size: 1rem; font-weight: normal; color: #333; font-family: 'Jameel Noori Nastaleeq', sans-serif;">(تم میں سے بہترین شخص وہ ہے جو قرآن سیکھے اور اسے سکھائے۔ - صحیح بخاری)</span></div>
                             
-                            <p>اس عظیم نبوی ارشاد کو مشعلِ راہ بناتے ہوئے اس کورس کو اس طرح ترتیب دیا گیا ہے کہ آپ بنیادی مخارج کی درستگی، تجوید کے قواعد اور تلاوت کے صحيح طریقہ کار کو آسانی سے سمجھ سکیں۔ کورس میں ہر طالب علم کی انفرادی اصلاح پر توجہ دی جائے گی تاکہ مخارج کی غلطیوں کو دور کر کے تلاوت میں حسن اور روانی پیدا کی جا سکے۔</p>
+                            <p>اس عظیم نبوی ارشاد کو مشعلِ راہ بناتے ہوئے اس کورس کو اس طرح ترتیب دیا گیا ہے کہ آپ بنیادی مخارج کی درستگی، تجوید کے قواعد اور تلاوت کے صحيح طریقہ کار کو آسانی سے سمجھ سکیں۔ کورس میں ہر طالب علم کی انفرادی اصلاح پر توجہ دی جائے گی تاکہ مخارج کی غلطیوں کو دور کر کے تلاوت میں حسن اور روانی پیدا کی جا سکے。</p>
                             
                             <p><strong>اہم خصوصیت:</strong> اس کورس کی سب سے اہم اور نمایاں خصوصیت اس کے خصوصی پریکٹس سیشنز ہیں۔ صرف قواعد یاد کرنا کافی نہیں ہوتا، اسی لیے ان عملی سیشنز میں آپ کو استاد کے سامنے باقاعدگی سے تلاوت کی مشق کروائی جائے گی۔ اس سے نہ صرف آپ کا اعتماد بڑھے گا بلکہ آپ کی تلاوت میں درستگی، خوبصورتی اور فطری بہاؤ پیدا ہوگا۔ یہ کورس آپ کے لیے قرآن کریم سے اپنا تعلق مضبوط کرنے اور دوہری سعادت حاصل کرنے کا بہترین ذریعہ بنے گا۔</p>
                         </div>
@@ -333,9 +352,9 @@
                         <div class="course-details" id="c3-details">
                             <p>عربی بول چال کا یہ جامع کورس ان تمام افراد کے لیے ایک بہترین موقع ہے جو عربی زبان سیکھنے، سمجھنے اور اسے اپنی روزمرہ گفتگو میں روانی کے ساتھ بولنے کے خواہش مند ہیں۔ عربی زبان کی اہمیت اور اس سے محبت کا اندازہ اس روایت سے ہوتا ہے جس میں نبی کریم ﷺ نے ارشاد فرمایا:</p>
                             
-                            <div class="arabic-quote">«أَحِبُّوا الْعَرَبَ لِثَلَاثٍ: لِأَنِّي عَرَبِيٌّ، وَالْقُرْآنَ عَرَبِيٌّ، وَكَلامَ أَهْلِ الْجَنَّةِ عَرَبِيٌّ»<br><span style="font-size: 0.9rem; font-weight: normal; color: #333;">(عرب سے تین وجہ سے محبت کرو: اس لیے کہ میں عربی ہوں، قرآن عربی میں ہے، اور اہل جنت کا کلام عربی ہوگا۔ - طبرانی، بیہقی)</span></div>
+                            <div class="arabic-quote">«أَحِبُّوا الْعَرَبَ لِثَلَاثٍ: لِأَنِّي عَرَبِيٌّ، وَالْقُرْآنَ عَرَبِيٌّ، وَكَلامَ أَهْلِ الْجَنَّةِ عَرَبِيٌّ»<br><span style="font-size: 1rem; font-weight: normal; color: #333; font-family: 'Jameel Noori Nastaleeq', sans-serif;">(عرب سے تین وجہ سے محبت کرو: اس لیے کہ میں عربی ہوں، قرآن عربی میں ہے، اور اہل جنت کا کلام عربی ہوگا۔ - طبرانی، بیہقی)</span></div>
                             
-                            <p>اس مبارک جذبے۔۔۔ اور اہم مقاصد کو سامنے رکھتے ہوئے، اس کورس میں آپ کو روزمرہ کی گفتگو، سفر، خرید و فروخت اور عام ملاقاتوں میں استعمال ہونے والی بااثر عربی زبان سکھائی جائے گی۔ آپ کو یہ سیکھنے کا موقع ملے گا کہ کس طرح درست الفاظ کا انتخاب کر کے واضح اور خوبصورت جملے بنائے جاتے ہیں۔</p>
+                            <p>اس مبارک جذبے اور اہم مقاصد کو سامنے رکھتے ہوئے، اس کورس میں آپ کو روزمرہ کی گفتگو، سفر، خرید و فروخت اور عام ملاقاتوں میں استعمال ہونے والی بااثر عربی زبان سکھائی جائے گی۔ آپ کو یہ سیکھنے کا موقع ملے گا کہ کس طرح درست الفاظ کا انتخاب کر کے واضح اور خوبصورت جملے بنائے جاتے ہیں۔</p>
                             
                             <p><strong>اہم خصوصیت:</strong> اس کورس کی سب سے نمایاں خصوصیت اس کے خصوصی پریکٹس سیشنز ہیں۔ محض گرامر اور سبق پڑھ لینا کافی نہیں ہوتا، اسی لیے ان عملی سیشنز میں آپ کو باقاعدگی سے بولنے اور گفتگو کرنے کی مشق کروائی جائے گی۔ اس سے آپ کی ہچکچاہٹ ختم ہوگی، تلفظ کی ادائیگی درست ہوگی اور بول چال میں فطری روانی پیدا ہوگی۔ یہ کورس عربی زبان سے آپ کے تعلق کو مضبوط بنانے کا بہترین ذریعہ ہے۔</p>
                         </div>
@@ -352,11 +371,11 @@
                         <div class="course-details" id="c4-details">
                             <p>صرف و نحو (عربی گرامر) کا یہ جامع کورس ان تمام افراد کے لیے ایک بہترین موقع ہے جو عربی زبان کے قواعد کو سمجھ کر قرآن، حدیث اور کلاسیکی عربی ادب کو بنیادی سطح سے سمجھنے کے خواہش مند ہیں۔ عربی گرامر وہ بنیادی چابی ہے جس کے بغیر قرآن و حدیث کے گہرے مفاہیم تک رسائی ممکن نہیں، اور اس کی اہمیت کا اندازہ حضرت عمر بن خطاب رضی اللہ عنہ کے اس مشہور قول سے ہوتا ہے:</p>
                             
-                            <div class="arabic-quote">«تَعَلَّمُوا الْعَرَبِيَّةَ فَإِنَّهَا مِنْ دِينِكُمْ»<br><span style="font-size: 0.9rem; font-weight: normal; color: #333;">(عربی زبان (اور اس کے قواعد) سیکھو، کیونکہ یہ تمہارے دین کا حصہ ہے۔ - شعب الایمان للبیہقی)</span></div>
+                            <div class="arabic-quote">«تَعَلَّمُوا الْعَرَبِيَّةَ فَإِنَّهَا مِنْ دِينِكُمْ»<br><span style="font-size: 1rem; font-weight: normal; color: #333; font-family: 'Jameel Noori Nastaleeq', sans-serif;">(عربی زبان (اور اس کے قواعد) سیکھو، کیونکہ یہ تمہارے دین کا حصہ ہے۔ - شعب الایمان للبیہقی)</span></div>
                             
-                            <p> بنیادی ضرورت کو مدِ نظر رکھتے ہوئے اس کورس میں آپ کو علمِ صرف (الفاظ کی ساخت اور ان کے گردان) اور علمِ نحو (جملوں کی ترسیب اور ان کے آخری اعراب) کو انتہائی سادہ، فہم عام اور منظم انداز میں سکھایا جائے گا، تاکہ آپ کو لفظ اور جملے کے درمیان تعلق کو سمجھنے میں کوئی دشواری پیش نہ آئے۔</p>
+                            <p>بنیادی ضرورت کو مدِ نظر رکھتے ہوئے اس کورس میں آپ کو علمِ صرف (الفاظ کی ساخت اور ان کے گردان) اور علمِ نحو (جملوں کی ترسیب اور ان کے آخری اعراب) کو انتہائی سادہ، فہم عام اور منظم انداز میں سکھایا جائے گا، تاکہ آپ کو لفظ اور جملے کے درمیان تعلق کو سمجھنے میں کوئی دشواری پیش نہ آئے۔</p>
                             
-                            <p><strong>اہم خصوصیت:</strong> اس کورس کی سب سے نمایاں خصوصیت اس کے خصوصی پریکٹس سیشنز ہیں۔ صرف قواعد یاد کر لینا کافی نہیں ہوتا جب تک ان کا تطبیق نہ کیا جائے، اسی لیے ان عملی سیشنز میں آپ کو قرآنی آیات اور عربی عبارات سے ترکیبی مشق (اعراب و تحلیل) کروائی جائے گی۔ اس سے نہ صرف آپ کا قواعد پر اعتماد بحال ہوگا بلکہ عربی عبارات کو درست اعراب کے ساتھ پڑھنے اور ان کا صحیح ترجمہ کرنے کی صلاحیت پیدا ہوگی۔ یہ کورس علومِ اسلامیہ کے فہم اور عربی زبان پر عبور کے لیے ایک مضبوط بنیاد ثابت ہوگا۔</p>
+                            <p><strong>اہم خصوصیت:</strong> اس کورس کی سب سے نمایاں خصوصیت اس کے خصوصی پریکٹس سیشنز ہیں۔ صرف قواعد یاد कर लेना کافی نہیں ہوتا جب تک ان کا تطبیق نہ کیا جائے، اسی لیے ان عملی سیشنز میں آپ کو قرآنی آیات اور عربی عبارات سے ترکیبی مشق (اعراب و تحلیل) کروائی جائے گی۔ اس سے نہ صرف آپ کا قواعد پر اعتماد بحال ہوگا بلکہ عربی عبارات کو درست اعراب کے ساتھ پڑھنے اور ان کا صحیح ترجمہ کرنے کی صلاحیت پیدا ہوگی۔ یہ کورس علومِ اسلامیہ کے فہم اور عربی زبان پر عبور کے لیے ایک مضبوط بنیاد ثابت ہوگا۔</p>
                         </div>
                     </div>
                     <button class="details-btn" onclick="toggleDetails('c4-details', this)" id="c4-btn">مزید تفصیلات پڑھیں</button>
@@ -371,7 +390,7 @@
                         <div class="course-details" id="c5-details">
                             <p>فہمِ دین کا یہ جامع کورس ان تمام افراد کے لیے ایک بہترین موقع ہے جو اسلام کی بنیادی تعلیمات، عقائد، اور احکامِ شریعت کو صحیح اور مدلل انداز میں سمجھنا چاہتے ہیں۔ دین کا بنیادی علم حاصل کرنا ہر مسلمان کی دینی ضرورت ہے، اور اس کی اہمیت کا اندازہ رسول اللہ ﷺ کے اس مبارک فرمان سے ہوتا ہے:</p>
                             
-                            <div class="arabic-quote">«مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ»<br><span style="font-size: 0.9rem; font-weight: normal; color: #333;">(اللہ تعالیٰ جس شخص کے ساتھ بھلائی کا ارادہ فرماتا ہے، اسے دین کی گہری سمجھ بوجھ عطا فرما دیتا ہے۔ - صحیح بخاری و صحیح مسلم)</span></div>
+                            <div class="arabic-quote">«مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ»<br><span style="font-size: 1rem; font-weight: normal; color: #333; font-family: 'Jameel Noori Nastaleeq', sans-serif;">(اللہ تعالیٰ جس شخص کے ساتھ بھلائی کا ارادہ فرماتا ہے، اسے دین کی گہری سمجھ بوجھ عطا فرما دیتا ہے۔ - صحیح بخاری و صحیح مسلم)</span></div>
                             
                             <p>اس عظیم مقصد کو پیشِ نظر رکھتے ہوئے اس کورس میں آپ کو عقائد، عبادات، سیرتِ طیبہ، اور روزمرہ زندگی سے متعلق شرعی مسائل کا بنیادی اور فہمِ عام علم فراہم کیا جائے گا، تاکہ آپ اپنے عمل اور زندگی کو اسلام کے اصولوں کے مطابق ڈھال سکیں۔</p>
                             
@@ -389,8 +408,8 @@
             <h2 id="adm-title">آن لائن داخلہ (Admission)</h2>
             <p id="adm-desc">اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا چاہتے ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں:</p>
             <div class="admission-box">
-                <p style="font-size: 1.1rem; margin-bottom: 15px; font-weight: bold; color: #e65100;" id="adm-box-title">داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUPeGuIIxhfc49VG5FET4e6yPVNcNrAQOBuDIWA0WGrDnMDw/viewform?usp=publish-editor" target="_blank" style="background-color: #ff8f00; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 1.1rem;" id="adm-btn">فارم کھولیں اور داخلہ لیں</a>
+                <p style="font-size: 1.15rem; margin-bottom: 15px; font-weight: bold; color: #e65100;" id="adm-box-title">داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUPeGuIIxhfc49VG5FET4e6yPVNcNrAQOBuDIWA0WGrDnMDw/viewform?usp=publish-editor" target="_blank" style="background-color: #ff8f00; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 1.15rem;" id="adm-btn">فارم کھولیں اور داخلہ لیں</a>
             </div>
         </section>
 
