@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="ur" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدینہ اکیڈمی - Madina Academy</title>
+    <title id="site-title">مدینہ اکیڈمی</title>
     <!-- گوگل فونٹس -->
     <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -18,11 +18,37 @@
             color: #333;
             line-height: 1.8;
         }
+        /* فلوٹنگ لینگویج سلیکٹر (سائیڈ میں چھوٹا سا آئیکن) */
+        .lang-switcher-box {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #004d40;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        .lang-switcher-box select {
+            background: white;
+            color: #004d40;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+        }
         /* ہیڈر سیکشن */
         header {
             background-color: #004d40;
             color: white;
-            padding: 25px 0;
+            padding: 30px 0;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
@@ -31,24 +57,8 @@
             margin-bottom: 5px;
         }
         header p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #b2dfdb;
-        }
-        /* زبان تبدیل کرنے والا بار (Language Bar) */
-        .lang-bar {
-            background-color: #00251a;
-            text-align: center;
-            padding: 8px;
-        }
-        .lang-bar a {
-            color: #ffb300;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        .lang-bar a:hover {
-            text-decoration: underline;
         }
         /* نیویگیشن بار */
         nav {
@@ -106,21 +116,6 @@
             padding-bottom: 5px;
             display: inline-block;
         }
-        /* زبان کے سیکشنز (لینگویج بلاکس) */
-        .lang-section {
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed #ddd;
-        }
-        .lang-title {
-            background: #00796b;
-            color: white;
-            padding: 5px 15px;
-            display: inline-block;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
         /* کورسز کارڈز */
         .courses-grid {
             display: grid;
@@ -134,11 +129,16 @@
             padding: 25px;
             border-radius: 6px;
             text-align: center;
+            transition: transform 0.3s;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .course-card h3 {
             color: #2e7d32;
             margin-bottom: 10px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
         /* ایڈمیشن باکس */
         .admission-box {
@@ -149,7 +149,12 @@
             text-align: center;
             margin-top: 20px;
         }
-        /* فلوٹنگ واٹس ایپ بٹن */
+        /* رابطہ فارم اور معلومات */
+        .contact-info {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        /* تیرتا ہوا (Floating) واٹس ایپ بٹن */
         .float-whatsapp {
             position: fixed;
             width: 60px;
@@ -186,106 +191,248 @@
 </head>
 <body>
 
-    <!-- زبان تبدیل کرنے کا بار -->
-    <div class="lang-bar">
-        <span>Languages: </span>
-        <a href="#urdu">اردو</a> | 
-        <a href="#arabic">العربية</a> | 
-        <a href="#english">English</a>
+    <!-- سائیڈ میں زبان تبدیل کرنے والا چھوٹا سا باکس -->
+    <div class="lang-switcher-box">
+        <span>🌐</span>
+        <select id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="ur">اردو</option>
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+        </select>
     </div>
 
     <!-- ہیڈر -->
     <header>
-        <h1>مدینہ اکیڈمی / Madina Academy</h1>
-        <p>عربی زبان اور شارٹ دینی کورسز کا ادارہ (زیرِ نگرانی: ابو العربی مدنی)</p>
+        <h1 id="t-header-title">مدینہ اکیڈمی</h1>
+        <p id="t-header-sub">عربی زبان میں روانی اور شارٹ دینی کورسز کا بہترین ادارہ (زیرِ نگرانی: ابو العربی مدنی)</p>
     </header>
 
     <!-- نیویگیشن بار -->
     <nav>
-        <a href="#home">ہوم / Home</a>
-        <a href="#courses">کورسز / Courses</a>
-        <a href="#admission" class="admission-btn">📝 آن لائن داخلہ / Admission</a>
-        <a href="#contact">رابطہ / Contact</a>
-        <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
+        <a href="#home" id="t-nav-home">ہوم پیج</a>
+        <a href="#about" id="t-nav-about">تعارف</a>
+        <a href="#courses" id="t-nav-courses">ہمارے کورسز</a>
+        <a href="#admission" class="admission-btn" id="t-nav-admission">📝 آن لائن داخلہ</a>
+        <a href="#contact" id="t-nav-contact">رابطہ</a>
+        <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20کورسز%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" target="_blank" class="whatsapp-btn" id="t-nav-wa">💬 واٹس ایپ چیٹ</a>
     </nav>
 
     <!-- مین کنٹینر -->
     <div class="container">
         
-        <!-- ہوم / تعارف (تینوں زبانوں میں) -->
+        <!-- ہوم / خوش آمدید -->
         <section id="home">
-            <h2>خوش آمدید / Welcome / أهلاً وسهلاً</h2>
-            
-            <!-- اردو سیکشن -->
-            <div id="urdu" class="lang-section">
-                <span class="lang-title">اردو</span>
-                <p><strong>مدینہ اکیڈمی</strong> میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں عربی بول چال میں مہارت حاصل کرنا چاہتے ہیں اور ضروری دینی علوم سے روشناس ہونا چاہتے ہیں۔ بانی و معلم: <strong>ابو العربی مدنی</strong>۔</p>
-            </div>
-
-            <!-- عربی سیکشن -->
-            <div id="arabic" class="lang-section" dir="rtl">
-                <span class="lang-title">العربية</span>
-                <p>مرحباً بكم في <strong>أكاديمية المدينة</strong>. تم تأسيس هذه الأكاديمية خصيصاً للطلاب الراغبين في إتقان المحادثة باللغة العربية في وقت قصير وطلب العلوم الشرعية الأساسية. بإشراف المشرف: <strong>أبو العربي المدني</strong>.</p>
-            </div>
-
-            <!-- انگلش سیکشن -->
-            <div id="english" class="lang-section" dir="ltr" style="text-align: left;">
-                <span class="lang-title">English</span>
-                <p>Welcome to <strong>Madina Academy</strong>. This institution is specially established for students who want to master Arabic conversation in a short time and learn essential Islamic sciences. Managed by: <strong>Abu Al-Arabi Madani</strong>.</p>
-            </div>
+            <h2 id="t-welcome-title">خوش آمدید</h2>
+            <p id="t-welcome-desc">مدینہ اکیڈمی میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں عربی بول چال میں مہارت حاصل کرنا چاہتے ہیں اور ضروری دینی علوم سے روشناس ہونا چاہتے ہیں۔</p>
         </section>
 
-        <!-- کورسز سیکشن -->
+        <!-- ہمارے بارے میں -->
+        <section id="about">
+            <h2 id="t-about-title">ہمارے بارے میں</h2>
+            <p id="t-about-desc">مدینہ اکیڈمی کے بانی اور معلم <strong>ابو العربی مدنی</strong> ہیں۔ اکیڈمی کا بنیادی مقصد عامۃ الناس کو آسان فہم انداز میں عربی زبان بولنے کے قابل بنانا اور قرآن و سنت کی بنیادی تعلیمات سے جوڑنا ہے۔</p>
+        </section>
+
+        <!-- کورسز -->
         <section id="courses">
-            <h2>ہمارے کورسز / Our Courses / دوراتنا</h2>
+            <h2 id="t-courses-title">ہمارے خصوصی کورسز</h2>
             <div class="courses-grid">
                 <div class="course-card">
-                    <h3>🗣️ عربی بول چال / Arabic Conversation</h3>
-                    <p>روزمرہ کی گفتگو اور روانی کے لیے۔<br>For fluent daily communication.</p>
+                    <h3 id="t-course1-title">🗣️ عربی بول چال کورس</h3>
+                    <p id="t-course1-desc">روزمرہ کی گفتگو، عربی جملے بنانے کا طریقہ، اور بول چال میں روانی پیدا کرنے کے لیے خصوصی پریکٹس سیشنز۔</p>
                 </div>
                 <div class="course-card">
-                    <h3>📖 قرآن و فہمِ دین / Quran & Islamic Studies</h3>
-                    <p>ترجمہ قرآن اور بنیادی فقہ۔<br>Translation and basic Islamic jurisprudence.</p>
+                    <h3 id="t-course2-title">📖 شارٹ قرآن و فہمِ دین کورس</h3>
+                    <p id="t-course2-desc">تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل، احادیثِ مبارکہ اور روزمرہ کے مسنون اذکار کی تعلیم۔</p>
                 </div>
                 <div class="course-card">
-                    <h3>✍️ نحو و صرف / Arabic Grammar</h3>
-                    <p>عربی قواعد اور گرامر کا آسان کورس.<br>Easy grammar and syntax course.</p>
+                    <h3 id="t-course3-title">✍️ بنیادی نحو و صرف (قواعدِ عربی)</h3>
+                    <p id="t-course3-desc">عربی عبارت کو سمجھنے اور گرامر کی بنیادی غلطیوں سے بچنے کے لیے مختصر اور آسان کورس۔</p>
                 </div>
             </div>
         </section>
 
         <!-- آن لائن ایڈمیشن سیکشن -->
         <section id="admission">
-            <h2>آن لائن داخلہ / Online Admission</h2>
-            <p>داخلہ لینے کے لیے نیچے دیے گئے بٹن پر کلک کر کے فارم پُر کریں:<br>Click the button below to fill out the admission form:</p>
+            <h2 id="t-adm-title">آن لائن داخلہ (Admission)</h2>
+            <p id="t-adm-desc">اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا چاہتے ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں اور ڈائریکٹ داخلہ لیں:</p>
             <div class="admission-box">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUPeGuIIxhfc49VG5FET4e6yPVNcNrAQOBuDIWA0WGrDnMDw/viewform?usp=publish-editor" target="_blank" style="background-color: #ff8f00; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 1.1rem;">فارم کھولیں / Open Admission Form</a>
+                <p style="font-size: 1.2rem; margin-bottom: 15px; font-weight: bold; color: #e65100;" id="t-adm-box-title">داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUPeGuIIxhfc49VG5FET4e6yPVNcNrAQOBuDIWA0WGrDnMDw/viewform?usp=publish-editor" target="_blank" style="background-color: #ff8f00; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 1.1rem;" id="t-adm-btn">فارم کھولیں اور داخلہ لیں</a>
             </div>
         </section>
 
         <!-- رابطہ -->
         <section id="contact">
-            <h2>رابطہ / Contact Us</h2>
+            <h2 id="t-contact-title">رابطہ کیجئے</h2>
             <div class="contact-info">
-                <p><strong>منتظم / Manager:</strong> ابو العربی مدنی (Abu Al-Arabi Madani)</p>
-                <p><strong>واٹس ایپ / WhatsApp:</strong> +254180111857</p>
+                <p><strong id="t-manager-label">منتظم:</strong> ابو العربی مدنی</p>
+                <p><strong id="t-phone-label">فون نمبر / واٹس ایپ:</strong> +254180111857</p>
+                <p><strong id="t-email-label">ای میل:</strong> info@madinaacademy.com</p>
                 <p style="margin-top: 15px;">
-                    <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20جاننا%20چاہتا ہوں۔" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;">واٹس ایپ پر رابطہ کریں / Contact via WhatsApp</a>
+                    <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20جاننا%20چاہتا ہوں۔" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;" id="t-wa-link">واٹس ایپ پر میسج کریں</a>
                 </p>
             </div>
         </section>
 
     </div>
 
-    <!-- فلوٹنگ واٹس ایپ بٹن -->
+    <!-- سکرین کے کونے پر تیرتا ہوا واٹس ایپ کا گول آئیکن -->
     <a href="https://wa.me/254180111857?text=السلام%20علیکم!%20میں%20مدینہ%20اکیڈمی%20کے%20بارے%20میں%20معلومات%20چاہتا ہوں۔" class="float-whatsapp" target="_blank">
         💬
     </a>
 
     <!-- فوٹر -->
     <footer>
-        <p>جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی / Madina Academy</p>
+        <p id="t-footer">جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی</p>
     </footer>
+
+    <!-- زبان بدلنے کا جاوا اسکرپٹ کوڈ -->
+    <script>
+        const translations = {
+            ur: {
+                title: "مدینہ اکیڈمی",
+                headerTitle: "مدینہ اکیڈمی",
+                headerSub: "عربی زبان میں روانی اور شارٹ دینی کورسز کا بہترین ادارہ (زیرِ نگرانی: ابو العربی مدنی)",
+                navHome: "ہوم پیج",
+                navAbout: "تعارف",
+                navCourses: "ہمارے کورسز",
+                navAdmission: "📝 آن لائن داخلہ",
+                navContact: "رابطہ",
+                navWa: "💬 واٹس ایپ چیٹ",
+                welcomeTitle: "خوش آمدید",
+                welcomeDesc: "مدینہ اکیڈمی میں آپ کو خوش آمدید کہاجاتا ہے۔ یہ ادارہ خاص طور پر ان طلباء کے لیے قائم کیا گیا ہے جو کم مدت میں عربی بول چال میں مہارت حاصل کرنا چاہتے ہیں اور ضروری دینی علوم سے روشناس ہونا چاہتے ہیں۔",
+                aboutTitle: "ہمارے بارے میں",
+                aboutDesc: "مدینہ اکیڈمی کے بانی اور معلم <strong>ابو العربی مدنی</strong> ہیں۔ اکیڈمی کا بنیادی مقصد عامۃ الناس کو آسان فہم انداز میں عربی زبان بولنے کے قابل بنانا اور قرآن و سنت کی بنیادی تعلیمات سے جوڑنا ہے۔",
+                coursesTitle: "ہمارے خصوصی کورسز",
+                course1Title: "🗣️ عربی بول چال کورس",
+                course1Desc: "روزمرہ کی گفتگو، عربی جملے بنانے کا طریقہ، اور بول چال میں روانی پیدا کرنے کے لیے خصوصی پریکٹس سیشنز۔",
+                course2Title: "📖 شارٹ قرآن و فہمِ دین کورس",
+                course2Desc: "تلاوتِ قرآن مع ترجمہ، بنیادی فقہی مسائل، احادیثِ مبارکہ اور روزمرہ کے مسنون اذکار کی تعلیم۔",
+                course3Title: "✍️ بنیادی نحو و صرف (قواعدِ عربی)",
+                course3Desc: "عربی عبارت کو سمجھنے اور گرامر کی بنیادی غلطیوں سے بچنے کے لیے مختصر اور آسان کورس۔",
+                admTitle: "آن لائن داخلہ (Admission)",
+                admDesc: "اگر آپ ہمارے کسی بھی کورس میں داخلہ لینا چاہتے ہیں، تو نیچے دیے گئے بٹن پر کلک کر کے اپنا فارم پُر کریں اور ڈائریکٹ داخلہ لیں:",
+                admBoxTitle: "داخلہ فارم جمع کروانے کے لیے نیچے کلک کریں:",
+                admBtn: "فارم کھولیں اور داخلہ لیں",
+                contactTitle: "رابطہ کیجئے",
+                managerLabel: "منتظم:",
+                phoneLabel: "فون نمبر / واٹس ایپ:",
+                emailLabel: "ای میل:",
+                waLink: "واٹس ایپ پر میسج کریں",
+                footer: "جملہ حقوق محفوظ ہیں &copy; 2026 - مدینہ اکیڈمی",
+                dir: "rtl"
+            },
+            ar: {
+                title: "أكاديمية المدينة",
+                headerTitle: "أكاديمية المدينة",
+                headerSub: "المعهد الأمثل لإتقان المحادثة باللغة العربية والدورات الشرعية القصيرة (بإشراف: أبو العربي المدني)",
+                navHome: "الرئيسية",
+                navAbout: "من نحن",
+                navCourses: "دوراتنا",
+                navAdmission: "📝 التسجيل الإلكتروني",
+                navContact: "اتصل بنا",
+                navWa: "💬 واتساب",
+                welcomeTitle: "أهلاً وسهلاً",
+                welcomeDesc: "مرحباً بكم في أكاديمية المدينة. تم تأسيس هذه الأكاديمية خصيصاً للطلاب الراغبين في إتقان المحادثة باللغة العربية في وقت قصير وطلب العلوم الشرعية الأساسية.",
+                aboutTitle: "من نحن",
+                aboutDesc: "مؤسس ومعلم أكاديمية المدينة هو <strong>أبو العربي المدني</strong>. الهدف الأساسي للأكاديمية هو تمكين الناس من التحدث باللغة العربية بأسلوب سهل وربطهم بتعاليم الكتاب والسنة.",
+                coursesTitle: "دوراتنا الخاصة",
+                course1Title: "🗣️ دورة المحادثة العربية",
+                course1Desc: "محادثات يومية، طريقة تكوين الجمل العربية، جلسات تدريبية خاصة لطلاقة اللسان.",
+                course2Title: "📖 دورة القرآن الكريم وفهم الدين",
+                course2Desc: "تلاوة القرآن مع الترجمة، المسائل الفقهية الأساسية، والأحاديث النبوية والاذكار اليومية.",
+                course3Title: "✍️ النحو والصرف الأساسي (قواعد العربية)",
+                course3Desc: "دورة مختصرة وسهلة لفهم النصوص العربية وتجنب الأخطاء النحوية.",
+                admTitle: "التسجيل الإلكتروني (Admission)",
+                admDesc: "إذا كنت تريد التسجيل في أي من دوراتنا، انقر فوق الزر أدناه لملء النموذج والتسجيل مباشرة:",
+                admBoxTitle: "انقر أدناه لإرسال استمارة التسجيل:",
+                admBtn: "افتح النموذج وسجل الآن",
+                contactTitle: "اتصل بنا",
+                managerLabel: "المشرف:",
+                phoneLabel: "رقم الهاتف / واتساب:",
+                emailLabel: "البريد الإلكتروني:",
+                waLink: "راسلنا عبر واتساب",
+                footer: "جميع الحقوق محفوظة &copy; 2026 - أكاديمية المدينة",
+                dir: "rtl"
+            },
+            en: {
+                title: "Madina Academy",
+                headerTitle: "Madina Academy",
+                headerSub: "The Best Institute for Arabic Fluency and Short Islamic Courses (Managed by: Abu Al-Arabi Madani)",
+                navHome: "Home",
+                navAbout: "About Us",
+                navCourses: "Courses",
+                navAdmission: "📝 Online Admission",
+                navContact: "Contact",
+                navWa: "💬 WhatsApp Chat",
+                welcomeTitle: "Welcome",
+                welcomeDesc: "Welcome to Madina Academy. This institute is specially established for students who want to master Arabic conversation in a short time and learn essential Islamic sciences.",
+                aboutTitle: "About Us",
+                aboutDesc: "The founder and teacher of Madina Academy is <strong>Abu Al-Arabi Madani</strong>. The main objective of the academy is to enable people to speak Arabic easily and connect them with the teachings of the Quran and Sunnah.",
+                coursesTitle: "Our Special Courses",
+                course1Title: "🗣️ Arabic Conversation Course",
+                course1Desc: "Daily conversations, sentence building methods, and special practice sessions for fluency.",
+                course2Title: "📖 Short Quran & Islamic Studies",
+                course2Desc: "Quran recitation with translation, basic jurisprudence, ahadith, and daily duas.",
+                course3Title: "✍️ Basic Arabic Grammar (Nahw & Sarf)",
+                course3Desc: "A short and easy course to understand Arabic texts and avoid grammar mistakes.",
+                admTitle: "Online Admission",
+                admDesc: "If you want to enroll in any of our courses, click the button below to fill out the form and secure your admission:",
+                admBoxTitle: "Click below to submit the admission form:",
+                admBtn: "Open Form & Enroll",
+                contactTitle: "Contact Us",
+                managerLabel: "Manager:",
+                phoneLabel: "Phone / WhatsApp:",
+                emailLabel: "Email:",
+                waLink: "Message via WhatsApp",
+                footer: "All Rights Reserved &copy; 2026 - Madina Academy",
+                dir: "ltr"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.getElementById('html-root').setAttribute('lang', lang);
+            document.getElementById('html-root').setAttribute('dir', t.dir);
+            document.getElementById('site-title').innerText = t.title;
+
+            document.getElementById('t-header-title').innerText = t.headerTitle;
+            document.getElementById('t-header-sub').innerText = t.headerSub;
+            document.getElementById('t-nav-home').innerText = t.navHome;
+            document.getElementById('t-nav-about').innerText = t.navAbout;
+            document.getElementById('t-nav-courses').innerText = t.navCourses;
+            document.getElementById('t-nav-admission').innerText = t.navAdmission;
+            document.getElementById('t-nav-contact').innerText = t.navContact;
+            document.getElementById('t-nav-wa').innerText = t.navWa;
+
+            document.getElementById('t-welcome-title').innerText = t.welcomeTitle;
+            document.getElementById('t-welcome-desc').innerText = t.welcomeDesc;
+            document.getElementById('t-about-title').innerText = t.aboutTitle;
+            document.getElementById('t-about-desc').innerHTML = t.aboutDesc;
+
+            document.getElementById('t-courses-title').innerText = t.coursesTitle;
+            document.getElementById('t-course1-title').innerText = t.course1Title;
+            document.getElementById('t-course1-desc').innerText = t.course1Desc;
+            document.getElementById('t-course2-title').innerText = t.course2Title;
+            document.getElementById('t-course2-desc').innerText = t.course2Desc;
+            document.getElementById('t-course3-title').innerText = t.course3Title;
+            document.getElementById('t-course3-desc').innerText = t.course3Desc;
+
+            document.getElementById('t-adm-title').innerText = t.admTitle;
+            document.getElementById('t-adm-desc').innerText = t.admDesc;
+            document.getElementById('t-adm-box-title').innerText = t.admBoxTitle;
+            document.getElementById('t-adm-btn').innerText = t.admBtn;
+
+            document.getElementById('t-contact-title').innerText = t.contactTitle;
+            document.getElementById('t-manager-label').innerText = t.managerLabel;
+            document.getElementById('t-phone-label').innerText = t.phoneLabel;
+            document.getElementById('t-email-label').innerText = t.emailLabel;
+            document.getElementById('t-wa-link').innerText = t.waLink;
+            document.getElementById('t-footer').innerHTML = t.footer;
+        }
+    </script>
 
 </body>
 </html>
