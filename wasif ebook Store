@@ -1,1 +1,708 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واصف اسٹور | Wasif Store</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        urdu: ['Noto Nastaliq Urdu', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#022c22',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111827; }
+        ::-webkit-scrollbar-thumb { background: #059669; border-radius: 4px; }
+        .urdu-text { line-height: 2.2; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col">
 
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 border-b border-brand-700/30 text-gold-400 text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <i class="fa-solid fa-bolt text-gold-400"></i>
+        <span id="top-bar-text">آرڈر کی فوری ادائیگی کے بعد کتاب کا ڈاؤن لوڈ لنک آن لائن حاصل کریں!</span>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-gray-900/90 backdrop-blur-md border-b border-gray-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-gold-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                    <i class="fa-solid fa-book-open text-xl"></i>
+                </div>
+                <div>
+                    <span id="logo-text" class="text-xl font-bold bg-gradient-to-r from-white via-emerald-200 to-gold-400 bg-clip-text text-transparent urdu-text">مکتبہ ڈیجیٹل</span>
+                    <p class="text-[10px] text-gray-400 -mt-1 hidden sm:block">Digital E-Book Store</p>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="flex-1 max-w-md mx-2">
+                <div class="relative">
+                    <input type="text" id="search-input" placeholder="کتاب یا مصنف کا نام تلاش کریں..." 
+                        class="w-full pl-10 pr-10 py-2.5 bg-gray-800/80 border border-gray-700 rounded-full text-sm text-gray-100 placeholder-gray-400 focus:bg-gray-800 focus:border-brand-500 focus:outline-none transition-all">
+                    <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <button id="clear-search" class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 hover:text-white hidden">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Language Switcher -->
+                <button id="lang-toggle" onclick="toggleLanguage()" class="px-3 py-1.5 border border-gray-700 rounded-lg text-xs font-semibold text-gray-300 hover:bg-gray-800 hover:border-brand-500 transition-all">
+                    English
+                </button>
+
+                <!-- Cart Button -->
+                <button id="cart-btn" onclick="openCart()" class="relative p-2.5 bg-brand-900/60 text-brand-400 hover:bg-brand-900 border border-brand-700/50 rounded-full transition-all">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-gold-500 text-gray-950 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950 text-white py-12 md:py-16 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4 text-center md:text-right">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 bg-gold-500/10 border border-gold-500/30 rounded-full text-xs font-medium text-gold-400">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>فوری پی ڈی ایف (PDF) ڈاؤن لوڈ</span>
+                    </span>
+                    <h1 id="hero-title" class="text-3xl sm:text-5xl font-extrabold leading-tight urdu-text">
+                        بہترین اسلامی و علمی ای بکس حاصل کریں
+                    </h1>
+                    <p id="hero-desc" class="text-gray-400 text-sm sm:text-base max-w-xl leading-relaxed">
+                        اپنے فون یا ٹیبلٹ پر کہیں بھی پڑھیں۔ آن لائن آرڈر کریں اور فوراً ڈاؤن لوڈ لنک کے ساتھ کتاب حاصل کریں۔
+                    </p>
+                </div>
+                <!-- Featured Banner Card -->
+                <div class="flex justify-center">
+                    <div class="bg-gradient-to-tr from-gray-800 to-gray-900 p-6 rounded-2xl border border-gray-700/60 shadow-2xl flex items-center gap-5 max-w-md">
+                        <div class="w-24 h-36 flex-shrink-0 rounded-lg overflow-hidden border border-gold-500/30 shadow-md">
+                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80" alt="Special eBook" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <span class="text-[10px] bg-brand-500/20 text-brand-400 px-2 py-0.5 rounded border border-brand-500/30 font-semibold">ای بک (ڈیجیٹل)</span>
+                            <h3 class="font-bold text-white text-base mt-1 urdu-text">عربی گرامر سیکھیں</h3>
+                            <p class="text-xs text-gray-400 mb-2">مصنف: ڈاکٹر احمد حسن</p>
+                            <span class="text-emerald-400 font-bold text-sm">PKR 500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1" id="products-section">
+
+        <!-- Catalog Filter Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+                <h2 id="catalog-title" class="text-2xl font-bold text-white urdu-text">کتب کا ذخیرہ</h2>
+                <p id="catalog-subtitle" class="text-xs text-gray-400">اپنی پسندیدہ ای بک منتخب کریں</p>
+            </div>
+
+            <!-- Categories -->
+            <div id="category-filters" class="flex flex-wrap gap-2 overflow-x-auto pb-2"></div>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-16 bg-gray-900 rounded-2xl border border-dashed border-gray-800 my-8">
+            <i class="fa-solid fa-book-skull text-5xl text-gray-600 mb-4"></i>
+            <h3 id="empty-title" class="text-lg font-bold text-gray-300">کوئی کتاب نہیں ملی</h3>
+            <p id="empty-desc" class="text-sm text-gray-500 mt-1">براہ کرم کچھ اور نام تلاش کرنے کی کوشش کریں</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 text-gray-400 py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-right">
+            <div>
+                <span class="text-lg font-bold text-white urdu-text">مکتبہ ڈیجیٹل</span>
+                <p class="text-xs text-gray-500 mt-1">تمام ای بکس پی ڈی ایف فارمیٹ میں دستیاب ہیں © 2026</p>
+            </div>
+            <div class="flex gap-4 text-lg">
+                <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-brand-600 flex items-center justify-center text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-brand-600 flex items-center justify-center text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-opacity duration-300 opacity-0">
+        <div id="cart-backdrop" onclick="closeCart()" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+        <div class="fixed inset-y-0 right-0 max-w-full flex">
+            <div id="cart-panel" class="w-screen max-w-md bg-gray-900 text-gray-100 border-l border-gray-800 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 pointer-events-auto">
+                
+                <!-- Drawer Header -->
+                <div class="px-6 py-4 bg-gray-950 border-b border-gray-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-book-bookmark text-brand-400"></i>
+                        <h2 id="cart-drawer-title" class="text-lg font-bold text-white urdu-text">آپ کی منتخب کردہ کتب</h2>
+                    </div>
+                    <button onclick="closeCart()" class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-gray-800">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Items list -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+                <!-- Checkout Summary -->
+                <div class="p-6 bg-gray-950 border-t border-gray-800 space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span id="total-label">کل رقم:</span>
+                            <span id="cart-total" class="text-gold-400 font-bold text-base">PKR 0</span>
+                        </div>
+                    </div>
+
+                    <!-- Customer Inputs -->
+                    <div class="space-y-2 pt-2">
+                        <input type="text" id="cust-name" placeholder="آپ کا نام (Full Name)" class="w-full px-3 py-2 text-sm bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-brand-500 focus:outline-none">
+                        <input type="email" id="cust-email" placeholder="ای میل (Email for Ebook Delivery)" class="w-full px-3 py-2 text-sm bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-brand-500 focus:outline-none">
+                        <input type="text" id="cust-phone" placeholder="واٹس ایپ نمبر (WhatsApp No)" class="w-full px-3 py-2 text-sm bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-brand-500 focus:outline-none">
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <button onclick="processOrder()" class="w-full py-3 bg-gradient-to-r from-brand-600 to-emerald-500 hover:from-brand-500 hover:to-emerald-400 text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span id="checkout-btn-text">آرڈر کی تصدیق کریں اور ڈاؤن لوڈ حاصل کریں</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Preview / Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative text-gray-100" id="modal-content">
+            <button onclick="closeProductModal()" class="absolute top-3 left-3 bg-gray-800 hover:bg-gray-700 text-gray-300 p-2 rounded-full shadow transition-all z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="h-64 md:h-auto bg-gray-950 p-6 flex items-center justify-center">
+                    <img id="modal-img" src="" alt="" class="max-h-60 object-contain rounded shadow-2xl border border-gray-800">
+                </div>
+                <div class="p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span id="modal-type" class="text-[10px] bg-brand-500/20 text-brand-400 px-2 py-0.5 rounded border border-brand-500/30 font-semibold"></span>
+                            <span id="modal-format" class="text-[10px] bg-gold-500/20 text-gold-400 px-2 py-0.5 rounded border border-gold-500/30 font-semibold"></span>
+                        </div>
+                        <h3 id="modal-title" class="text-xl font-bold text-white mb-1 urdu-text"></h3>
+                        <p id="modal-author" class="text-xs text-gray-400 mb-3"></p>
+                        <p id="modal-price" class="text-2xl font-black text-emerald-400 mb-4"></p>
+                        
+                        <!-- Sample Chapter Excerpt -->
+                        <div class="bg-gray-950 p-3 rounded-lg border border-gray-800 text-xs text-gray-300 mb-4 max-h-32 overflow-y-auto">
+                            <span class="text-gold-400 font-bold block mb-1">📖 کتاب کا نمونہ (Sample Text):</span>
+                            <p id="modal-sample" class="leading-relaxed"></p>
+                        </div>
+                    </div>
+                    <button id="modal-add-btn" class="w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span id="modal-add-text">کارٹ میں شامل کریں</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Download Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-gray-900 border border-brand-500/40 rounded-2xl max-w-md w-full p-6 text-center shadow-2xl space-y-4">
+            <div class="w-16 h-16 bg-brand-500/20 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto border border-brand-500/30">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white urdu-text">مبارک ہو! آرڈر مکمل ہو گیا</h3>
+            <p class="text-xs text-gray-300">ذیلی بٹن پر کلک کر کے اپنی ای بکس پی ڈی ایف فارمیٹ میں فوراً ڈاؤن لوڈ کریں۔</p>
+            
+            <div id="download-links-container" class="space-y-2 py-2"></div>
+
+            <button onclick="closeSuccessModal()" class="w-full py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold rounded-lg">
+                بند کریں (Close)
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 bg-gray-800 border border-brand-500/30 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-msg" class="text-sm font-medium">ای بک کارٹ میں شامل کر دی گئی!</span>
+    </div>
+
+    <script>
+        // Ebook Data Store
+        const products = [
+            {
+                id: 1,
+                name_ur: "عربی گرامر سیکھیں (مکمل رہنما)",
+                name_en: "Learn Arabic Grammar (Complete Guide)",
+                category: "arabic",
+                type: "ebook", // Ebook type
+                format: "PDF (15 MB)",
+                author_ur: "ڈاکٹر احمد حسن",
+                author_en: "Dr. Ahmad Hassan",
+                pages: 240,
+                price: 500,
+                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80",
+                download_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", // Demo PDF Link
+                sample_text: "بسم اللہ الرحمن الرحیم۔ یہ کتاب عربی زبان و قواعد کو آسان ترین انداز میں سمجھانے کے لیے ترتیب دی گئی ہے۔ اس میں ہر سبق کے ساتھ مشقیں بھی دی گئی ہیں۔"
+            },
+            {
+                id: 2,
+                name_ur: "تفسیر و معارف القرآن (جلد 1)",
+                name_en: "Tafseer Maarif-ul-Quran (Vol 1)",
+                category: "islamic",
+                type: "ebook",
+                format: "PDF (45 MB)",
+                author_ur: "مولانا محمد شفیع",
+                author_en: "Maulana Muhammad Shafi",
+                pages: 580,
+                price: 1200,
+                image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80",
+                download_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                sample_text: "قرآن مجید کی آسان اور فہم عام تفسیر جو ہر عام و خاص کے لیےیکساں مفید ہے۔ اس جلد میں سورۃ الفاتحہ اور سورۃ البقرہ کا تفصیلی بیان موجود ہے۔"
+            },
+            {
+                id: 3,
+                name_ur: "سیرت النبی ﷺ (مکمل تاریخ)",
+                name_en: "Seerat un Nabi (Full History)",
+                category: "islamic",
+                type: "ebook",
+                format: "PDF (22 MB)",
+                author_ur: "علامہ شبلی نعمانی",
+                author_en: "Allama Shibli Nomani",
+                pages: 410,
+                price: 800,
+                image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=400&q=80",
+                download_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                sample_text: "نبی کریم صلی اللہ علیہ وسلم کی حیاتِ مبارکہ کا جامع اور مستند تذکرہ جو دلوں کو ایمان کی روشنی سے منور کرتا ہے۔"
+            },
+            {
+                id: 4,
+                name_ur: "بچوں کی تربیت کے اسلامی اصول",
+                name_en: "Islamic Principles of Child Upbringing",
+                category: "general",
+                type: "ebook",
+                format: "PDF (8 MB)",
+                author_ur: "فاطمہ زہراء",
+                author_en: "Fatima Zahra",
+                pages: 150,
+                price: 350,
+                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80",
+                download_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                sample_text: "جدید دور میں بچوں کی اخلاقی اور دینی تربیت کے لیے والدین کے لیے ایک بہترین رہنمائی کتاب۔"
+            }
+        ];
+
+        // Categories
+        const categories = [
+            { id: "all", name_ur: "تمام کتب", name_en: "All Ebooks" },
+            { id: "islamic", name_ur: "اسلامی کتب", name_en: "Islamic Books" },
+            { id: "arabic", name_ur: "عربی گرامر", name_en: "Arabic Learning" },
+            { id: "general", name_ur: "عام کتب", name_en: "General Books" }
+        ];
+
+        // Language UI Dictionary
+        const translations = {
+            ur: {
+                topBar: "آرڈر کی فوری ادائیگی کے بعد کتاب کا ڈاؤن لوڈ لنک آن لائن حاصل کریں!",
+                logo: "مکتبہ ڈیجیٹل",
+                searchPlaceholder: "کتاب یا مصنف کا نام تلاش کریں...",
+                heroTitle: "بہترین اسلامی و علمی ای بکس حاصل کریں",
+                heroDesc: "اپنے فون یا ٹیبلٹ پر کہیں بھی پڑھیں۔ آن لائن آرڈر کریں اور فوراً ڈاؤن لوڈ لنک کے ساتھ کتاب حاصل کریں۔",
+                catalogTitle: "کتب کا ذخیرہ",
+                catalogSubtitle: "اپنی پسندیدہ ای بک منتخب کریں",
+                addToCart: "کارٹ میں شامل کریں",
+                previewBook: "نمونہ دیکھیں",
+                cartTitle: "آپ کی منتخب کردہ کتب",
+                total: "کل رقم:",
+                checkoutBtn: "آرڈر کی تصدیق کریں اور ڈاؤن لوڈ حاصل کریں",
+                emptyCart: "آپ کی کارٹ خالی ہے",
+                emptySearchTitle: "کوئی کتاب نہیں ملی",
+                emptySearchDesc: "براہ کرم کچھ اور نام تلاش کرنے کی کوشش کریں",
+                ebookTag: "ای بک (ڈیجیٹل)"
+            },
+            en: {
+                topBar: "Instant E-Book PDF Download Link right after checkout!",
+                logo: "Maktaba Digital",
+                searchPlaceholder: "Search ebook or author...",
+                heroTitle: "Get Premium Islamic & Educational E-Books",
+                heroDesc: "Read anywhere on your tablet or smartphone. Order online and get immediate download access.",
+                catalogTitle: "E-Book Collection",
+                catalogSubtitle: "Select your favorite digital book",
+                addToCart: "Add to Cart",
+                previewBook: "Read Sample",
+                cartTitle: "Your Selected Books",
+                total: "Total Amount:",
+                checkoutBtn: "Confirm Order & Download",
+                emptyCart: "Your cart is empty",
+                emptySearchTitle: "No E-Books Found",
+                emptySearchDesc: "Try searching with a different title or author",
+                ebookTag: "E-Book (Digital)"
+            }
+        };
+
+        let currentLang = 'ur';
+        let currentCategory = 'all';
+        let cart = [];
+        let searchQuery = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderProducts();
+            
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase().trim();
+                document.getElementById('clear-search').classList.toggle('hidden', searchQuery === '');
+                renderProducts();
+            });
+
+            document.getElementById('clear-search').addEventListener('click', () => {
+                document.getElementById('search-input').value = '';
+                searchQuery = '';
+                document.getElementById('clear-search').classList.add('hidden');
+                renderProducts();
+            });
+        });
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ur' ? 'en' : 'ur';
+            document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            document.getElementById('lang-toggle').innerText = currentLang === 'ur' ? 'English' : 'اردو';
+            
+            const t = translations[currentLang];
+            document.getElementById('top-bar-text').innerText = t.topBar;
+            document.getElementById('logo-text').innerText = t.logo;
+            document.getElementById('search-input').placeholder = t.searchPlaceholder;
+            document.getElementById('hero-title').innerText = t.heroTitle;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('catalog-title').innerText = t.catalogTitle;
+            document.getElementById('catalog-subtitle').innerText = t.catalogSubtitle;
+            document.getElementById('cart-drawer-title').innerText = t.cartTitle;
+            document.getElementById('total-label').innerText = t.total;
+            document.getElementById('checkout-btn-text').innerText = t.checkoutBtn;
+
+            renderCategories();
+            renderProducts();
+            renderCart();
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('category-filters');
+            container.innerHTML = categories.map(cat => {
+                const isActive = cat.id === currentCategory;
+                const name = currentLang === 'ur' ? cat.name_ur : cat.name_en;
+                return `
+                    <button onclick="setCategory('${cat.id}')" 
+                        class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                            isActive 
+                            ? 'bg-brand-600 text-white shadow-md' 
+                            : 'bg-gray-900 text-gray-400 hover:bg-gray-800 border border-gray-800'
+                        }">
+                        ${name}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function setCategory(catId) {
+            currentCategory = catId;
+            renderCategories();
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const emptyState = document.getElementById('empty-state');
+
+            const filtered = products.filter(p => {
+                const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
+                const name = currentLang === 'ur' ? p.name_ur : p.name_en;
+                const author = currentLang === 'ur' ? p.author_ur : p.author_en;
+                const matchesSearch = name.toLowerCase().includes(searchQuery) || author.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = filtered.map(p => {
+                const name = currentLang === 'ur' ? p.name_ur : p.name_en;
+                const author = currentLang === 'ur' ? p.author_ur : p.author_en;
+                const t = translations[currentLang];
+
+                return `
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-xl hover:border-brand-500/50 transition-all duration-300 flex flex-col group">
+                        <div class="relative h-56 bg-gray-950 p-4 flex items-center justify-center overflow-hidden">
+                            <img src="${p.image}" alt="${name}" class="h-48 object-contain rounded shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 right-3 text-[10px] bg-brand-500/20 text-brand-400 border border-brand-500/30 px-2 py-0.5 rounded font-bold">
+                                ${t.ebookTag}
+                            </span>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                            <div>
+                                <h3 class="font-bold text-white text-base mb-1 ${currentLang === 'ur' ? 'urdu-text' : ''}">${name}</h3>
+                                <p class="text-xs text-gray-400"><i class="fa-solid fa-pen-nib text-brand-400 mr-1"></i> ${author}</p>
+                                <div class="flex items-center gap-3 text-[11px] text-gray-500 mt-2">
+                                    <span><i class="fa-solid fa-file-pdf"></i> ${p.format}</span>
+                                    <span>•</span>
+                                    <span><i class="fa-solid fa-book-open"></i> ${p.pages} صفحات</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2 pt-2 border-t border-gray-800">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-black text-emerald-400">PKR ${p.price.toLocaleString()}</span>
+                                    <button onclick="openProductModal(${p.id})" class="text-xs text-gold-400 hover:underline">
+                                        ${t.previewBook}
+                                    </button>
+                                </div>
+                                <button onclick="addToCart(${p.id})" class="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-bold shadow active:scale-95 transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                    <span>${t.addToCart}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+
+            if (!existing) {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartBadge();
+            renderCart();
+            showToast(currentLang === 'ur' ? 'ای بک کارٹ میں شامل کر دی گئی!' : 'Ebook added to cart!');
+        }
+
+        function openCart() {
+            document.getElementById('cart-drawer').classList.remove('pointer-events-none', 'opacity-0');
+            document.getElementById('cart-drawer').classList.add('opacity-100');
+            document.getElementById('cart-panel').classList.remove('translate-x-full');
+        }
+
+        function closeCart() {
+            document.getElementById('cart-panel').classList.add('translate-x-full');
+            document.getElementById('cart-drawer').classList.remove('opacity-100');
+            document.getElementById('cart-drawer').classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-500">
+                        <i class="fa-solid fa-book-open text-4xl mb-3"></i>
+                        <p class="text-sm">${translations[currentLang].emptyCart}</p>
+                    </div>
+                `;
+                document.getElementById('cart-total').innerText = 'PKR 0';
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = cart.map(item => {
+                const name = currentLang === 'ur' ? item.name_ur : item.name_en;
+                total += item.price;
+
+                return `
+                    <div class="flex gap-3 bg-gray-950 p-3 rounded-xl border border-gray-800 items-center">
+                        <img src="${item.image}" alt="${name}" class="w-12 h-16 object-contain rounded bg-gray-900">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-xs text-gray-200 ${currentLang === 'ur' ? 'urdu-text' : ''}">${name}</h4>
+                            <p class="text-xs text-emerald-400 font-semibold mt-1">PKR ${item.price.toLocaleString()}</p>
+                            <span class="text-[10px] text-gray-500">${item.format}</span>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-gray-500 hover:text-red-400 p-1">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cart-total').innerText = `PKR ${total.toLocaleString()}`;
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            renderCart();
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        function openProductModal(id) {
+            const p = products.find(prod => prod.id === id);
+            if (!p) return;
+
+            const name = currentLang === 'ur' ? p.name_ur : p.name_en;
+            const author = currentLang === 'ur' ? p.author_ur : p.author_en;
+
+            document.getElementById('modal-img').src = p.image;
+            document.getElementById('modal-title').innerText = name;
+            document.getElementById('modal-author').innerText = `مصنف: ${author}`;
+            document.getElementById('modal-type').innerText = translations[currentLang].ebookTag;
+            document.getElementById('modal-format').innerText = p.format;
+            document.getElementById('modal-price').innerText = `PKR ${p.price.toLocaleString()}`;
+            document.getElementById('modal-sample').innerText = p.sample_text;
+            
+            document.getElementById('modal-add-btn').onclick = () => {
+                addToCart(p.id);
+                closeProductModal();
+            };
+
+            const modal = document.getElementById('product-modal');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modal.classList.add('opacity-100');
+            document.getElementById('modal-content').classList.remove('scale-95');
+            document.getElementById('modal-content').classList.add('scale-100');
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal');
+            document.getElementById('modal-content').classList.remove('scale-100');
+            document.getElementById('modal-content').classList.add('scale-95');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Order Process & Instant Download Trigger
+        function processOrder() {
+            if (cart.length === 0) {
+                alert(currentLang === 'ur' ? 'آپ کی کارٹ میں کوئی کتاب نہیں ہے' : 'Your cart is empty');
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const email = document.getElementById('cust-email').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+
+            if (!name || !email || !phone) {
+                alert(currentLang === 'ur' ? 'براہ کرم تمام خانے (نام، ای میل، واٹس ایپ) پر کریں' : 'Please fill all details');
+                return;
+            }
+
+            // Create WhatsApp Link Backup
+            let message = `📚 *نیا ای بک آرڈر (Ebook Order)*\n\n`;
+            message += `👤 *نام:* ${name}\n📧 *ای میل:* ${email}\n📱 *فون:* ${phone}\n\n`;
+            message += `📖 *کتب:* \n`;
+
+            cart.forEach((item, i) => {
+                const itemName = currentLang === 'ur' ? item.name_ur : item.name_en;
+                message += `${i+1}. ${itemName} (PKR ${item.price})\n`;
+            });
+
+            // Generate Instant Download Links in Success Modal
+            const downloadContainer = document.getElementById('download-links-container');
+            downloadContainer.innerHTML = cart.map(item => {
+                const itemName = currentLang === 'ur' ? item.name_ur : item.name_en;
+                return `
+                    <a href="${item.download_url}" target="_blank" download class="block p-3 bg-brand-600/30 border border-brand-500/50 hover:bg-brand-600/50 rounded-xl text-white text-xs font-bold transition-all flex items-center justify-between">
+                        <span class="truncate max-w-[200px]">${itemName}</span>
+                        <span class="text-gold-400 flex items-center gap-1"><i class="fa-solid fa-download"></i> ڈاؤن لوڈ PDF</span>
+                    </a>
+                `;
+            }).join('');
+
+            closeCart();
+            openSuccessModal();
+
+            // Open WhatsApp in new tab
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/923001234567?text=${encoded}`, '_blank');
+
+            // Reset Cart
+            cart = [];
+            renderCart();
+            updateCartBadge();
+        }
+
+        function openSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modal.classList.add('opacity-100');
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
